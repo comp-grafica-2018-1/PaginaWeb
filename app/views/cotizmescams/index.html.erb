@@ -5,6 +5,11 @@
 <table>
   <thead>
     <tr>
+      <th>Colchón</th>
+      <th>Material</th>
+      <th>Color</th>
+      <th>Cajón Superior</th>
+      <th>Repisa</th>
       <th>Correo</th>
       <th>Nombre</th>
       <th colspan="3"></th>
@@ -14,6 +19,11 @@
   <tbody>
     <% @cotizmescams.each do |cotizmescam| %>
       <tr>
+        <td><%= cotizmescam.colchon %></td>
+        <td><%= cotizmescam.material %></td>
+        <td><%= cotizmescam.color %></td>
+        <td><%= cotizmescam.cajonsuperior %></td>
+        <td><%= cotizmescam.repisa %></td>
         <td><%= cotizmescam.correo %></td>
         <td><%= cotizmescam.nombre %></td>
         <td><%= link_to 'Show', cotizmescam %></td>

@@ -69,6 +69,6 @@ class CotizmescamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizmescam_params
-      params.require(:cotizmescam).permit(:correo, :nombre)
+      params.require(:cotizmescam).permit(:colchon, :material, :color, :cajonsuperior, :repisa, :correo, :nombre)
     end
 end

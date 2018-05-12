@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512053834) do
+ActiveRecord::Schema.define(version: 20180512152056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(version: 20180512053834) do
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "colchon"
+    t.string "material"
+    t.string "color"
   end
 
   create_table "cotizesccams", force: :cascade do |t|
@@ -62,6 +65,11 @@ ActiveRecord::Schema.define(version: 20180512053834) do
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "colchon"
+    t.string "material"
+    t.string "color"
+    t.string "cajonsuperior"
+    t.string "repisa"
   end
 
   create_table "cotizmesexps", force: :cascade do |t|
