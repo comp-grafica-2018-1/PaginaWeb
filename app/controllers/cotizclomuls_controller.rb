@@ -69,6 +69,6 @@ class CotizclomulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizclomul_params
-      params.require(:cotizclomul).permit(:correo, :nombre)
+      params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre)
     end
 end

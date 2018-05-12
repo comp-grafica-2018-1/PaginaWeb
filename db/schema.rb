@@ -10,45 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512152056) do
+ActiveRecord::Schema.define(version: 20180512160549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "cotiz_clo_muls", force: :cascade do |t|
-    t.string "correo"
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cotiz_esc_cams", force: :cascade do |t|
-    t.string "correo"
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cotiz_mes_cams", force: :cascade do |t|
-    t.string "correo"
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "cotiz_mes_exps", force: :cascade do |t|
-    t.string "correo"
-    t.string "nombre"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "cotizclomuls", force: :cascade do |t|
     t.string "correo"
     t.string "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "colchon"
+    t.string "altura"
+    t.string "anchura"
     t.string "material"
     t.string "color"
   end

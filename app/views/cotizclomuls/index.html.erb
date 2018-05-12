@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Altura (en metros)</th>
+      <th>Anchura (en metros)</th>
+      <th>Material</th>
+      <th>Color</th>
       <th>Correo</th>
       <th>Nombre</th>
       <th colspan="3"></th>
@@ -14,6 +18,10 @@
   <tbody>
     <% @cotizclomuls.each do |cotizclomul| %>
       <tr>
+        <td><%= cotizclomul.altura %></td>
+        <td><%= cotizclomul.anchura %></td>
+        <td><%= cotizclomul.material %></td>
+        <td><%= cotizclomul.color %></td>
         <td><%= cotizclomul.correo %></td>
         <td><%= cotizclomul.nombre %></td>
         <td><%= link_to 'Show', cotizclomul %></td>
