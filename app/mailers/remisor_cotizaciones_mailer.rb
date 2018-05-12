@@ -5,10 +5,9 @@ class RemisorCotizacionesMailer < ApplicationMailer
   #
   #   en.remisor_cotizaciones_mailer.confirmacioncotizclomul.subject
   #
-  def confirmacioncotizclomul
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def confirmacioncotizclomul(cotizacion)
+    @cotizacion = cotizacion
+    mail to: @cotizacion.correo, subject: "Confirmación de Cotización"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
