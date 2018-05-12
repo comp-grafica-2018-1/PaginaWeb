@@ -28,6 +28,7 @@ class CotizmescamsController < ApplicationController
 
     respond_to do |format|
       if @cotizmescam.save
+        RemisorCotizacionesMailer.confirmacioncotizmescam(@cotizmescam).deliver_now
         format.html { redirect_to @cotizmescam, notice: 'Cotizmescam was successfully created.' }
         format.json { render :show, status: :created, location: @cotizmescam }
       else

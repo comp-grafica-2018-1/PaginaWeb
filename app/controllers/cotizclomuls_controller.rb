@@ -28,6 +28,7 @@ class CotizclomulsController < ApplicationController
 
     respond_to do |format|
       if @cotizclomul.save
+        RemisorCotizacionesMailer.confirmacioncotizclomul(@cotizclomul).deliver_now
         format.html { redirect_to @cotizclomul, notice: 'Cotizclomul was successfully created.' }
         format.json { render :show, status: :created, location: @cotizclomul }
       else

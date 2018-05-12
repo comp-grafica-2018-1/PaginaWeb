@@ -1,0 +1,18 @@
+<h1>Informe de Detalles de Cotización</h1>
+
+<p>Cordial saludo, <%= @cotizacion.nombre %>. Por medio del presente mensaje, le confirmamos los detalles de su cotización:</p>
+
+<ul>
+	<li>Número de Cotización (Este número identificador consiste en una referencia de esta cotización, para cuando desee confirmar esta orden de compra): <%= @cotizacion.id %></li>
+	<li>Fecha de Solicitud: <%= @cotizacion.created_at %></li>
+	<li>Mueble Solicitado: Mesa Cama</li>
+	<li>Colchón: <%= @cotizacion.colchon %></li>
+	<li>Material: <%= @cotizacion.material %></li>
+	<li>Color: <%= @cotizacion.color %></li>
+	<li>Cajón Superior: <%= @cotizacion.cajonsuperior %></li>
+	<li>Repisa: <%= @cotizacion.repisa %></li>
+</ul>
+
+<p>Ingenio Funcional permite visualizar el producto definido en esta cotización, para hacerlo, le pedimos visitar la sección Mis Cotizaciones y consultar esta cotización por medio de la dirección de correo electrónico proporcionada en esta cotización e identificándola por medio del número de cotización dado previamente en este mensaje.</p>
+
+<p>Muchas gracias por su atención.</p>
