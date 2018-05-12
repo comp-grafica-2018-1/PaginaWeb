@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cotizmesexps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Correo</th>
+      <th>Nombre</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cotizmesexps.each do |cotizmesexp| %>
+      <tr>
+        <td><%= cotizmesexp.correo %></td>
+        <td><%= cotizmesexp.nombre %></td>
+        <td><%= link_to 'Show', cotizmesexp %></td>
+        <td><%= link_to 'Edit', edit_cotizmesexp_path(cotizmesexp) %></td>
+        <td><%= link_to 'Destroy', cotizmesexp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cotizmesexp', new_cotizmesexp_path %>

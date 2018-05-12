@@ -1,0 +1,2 @@
+class Cotizmescam < ApplicationRecord
+end
