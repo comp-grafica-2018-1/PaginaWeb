@@ -10,6 +10,7 @@
       <th>Color</th>
       <th>Correo</th>
       <th>Nombre</th>
+      <th>Cantidad</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
         <td><%= cotizmesexp.color %></td>
         <td><%= cotizmesexp.correo %></td>
         <td><%= cotizmesexp.nombre %></td>
+        <td><%= cotizmesexp.cantidad %></td>
         <td><%= link_to 'Show', cotizmesexp %></td>
         <td><%= link_to 'Edit', edit_cotizmesexp_path(cotizmesexp) %></td>
         <td><%= link_to 'Destroy', cotizmesexp, method: :delete, data: { confirm: 'Are you sure?' } %></td>

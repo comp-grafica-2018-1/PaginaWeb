@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :colchon %>
-    <%= form.select(:colchon, options_for_select([['Sencillo', 'Sencillo'], ['Semidoble', 'Semidoble']]), {include_blank: true}) %>
+    <%= form.select(:colchon, options_for_select([['Sencillo', 'Sencillo'], ['Semidoble', 'Semidoble'], ['Doble', 'Doble']]), {include_blank: true}) %>
   </div>
 
   <div class="field">
@@ -44,6 +44,11 @@
   <div class="field">
     <%= form.label :nombre %>
     <%= form.text_field :nombre, id: :cotizmescam_nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.select(:cantidad, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), {include_blank: true}) %>
   </div>
 
   <div class="actions">

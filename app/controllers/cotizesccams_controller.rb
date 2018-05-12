@@ -70,6 +70,6 @@ class CotizesccamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizesccam_params
-      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre)
+      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad)
     end
 end
