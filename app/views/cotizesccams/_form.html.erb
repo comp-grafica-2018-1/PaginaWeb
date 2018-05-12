@@ -12,6 +12,21 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :colchon %>
+    <%= form.select(:colchon, options_for_select([['Sencillo', 'Sencillo'], ['Semidoble', 'Semidoble']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material %>
+    <%= form.select(:material, options_for_select([['Material económico', 'Material económico'], ['Material caro', 'Material caro']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.select(:color, options_for_select([['Madera clara', 'Madera clara'], ['Madera oscura', 'Madera oscura']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
     <%= form.label :correo %>
     <%= form.text_field :correo, id: :cotizesccam_correo %>
   </div>
