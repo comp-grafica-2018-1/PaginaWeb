@@ -1,0 +1,2 @@
+module CotizclomulsHelper
+end

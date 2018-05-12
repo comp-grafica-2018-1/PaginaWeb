@@ -1,0 +1,2 @@
+class Cotizmesexp < ApplicationRecord
+end

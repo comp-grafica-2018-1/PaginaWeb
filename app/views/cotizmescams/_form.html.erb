@@ -1,0 +1,52 @@
+<%= form_with(model: cotizmescam, local: true) do |form| %>
+  <% if cotizmescam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cotizmescam.errors.count, "error") %> prohibited this cotizmescam from being saved:</h2>
+
+      <ul>
+      <% cotizmescam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :colchon %>
+    <%= form.select(:colchon, options_for_select([['Sencillo', 'Sencillo'], ['Semidoble', 'Semidoble']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material %>
+    <%= form.select(:material, options_for_select([['Material económico', 'Material económico'], ['Material caro', 'Material caro']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.select(:color, options_for_select([['Madera clara', 'Madera clara'], ['Madera oscura', 'Madera oscura']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cajonsuperior %>
+    <%= form.select(:cajonsuperior, options_for_select([['Sí', 'Sí'], ['No', 'No']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :repisa %>
+    <%= form.select(:repisa, options_for_select([['Sí', 'Sí'], ['No', 'No']]), {include_blank: true}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correo %>
+    <%= form.text_field :correo, id: :cotizmescam_correo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre, id: :cotizmescam_nombre %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

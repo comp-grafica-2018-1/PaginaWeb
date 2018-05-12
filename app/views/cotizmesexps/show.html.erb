@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Número de puestos:</strong>
+  <%= @cotizmesexp.numeropuestos %>
+</p>
+
+<p>
+  <strong>Material:</strong>
+  <%= @cotizmesexp.material %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @cotizmesexp.color %>
+</p>
+
+<p>
+  <strong>Correo:</strong>
+  <%= @cotizmesexp.correo %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @cotizmesexp.nombre %>
+</p>
+
+<%= link_to 'Edit', edit_cotizmesexp_path(@cotizmesexp) %> |
+<%= link_to 'Back', cotizmesexps_path %>

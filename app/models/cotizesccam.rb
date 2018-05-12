@@ -1,0 +1,2 @@
+class Cotizesccam < ApplicationRecord
+end

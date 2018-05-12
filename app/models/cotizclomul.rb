@@ -1,0 +1,2 @@
+class Cotizclomul < ApplicationRecord
+end
