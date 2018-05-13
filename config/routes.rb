@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'transacciones/index'
+
+  get 'transacciones/miscotizaciones'
+
+  get 'transacciones/mispedidos'
+
   get 'inicio/index'
 
   resources :cotizmesexps
