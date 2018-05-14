@@ -69,6 +69,6 @@ class OrdenclomulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ordenclomul_params
-      params.fetch(:ordenclomul, {})
+      params.require(:ordenclomul).permit(:fechaentrega, :idcotizacion, :altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
     end
 end

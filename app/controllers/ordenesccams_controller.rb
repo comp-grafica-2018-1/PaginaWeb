@@ -69,6 +69,6 @@ class OrdenesccamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ordenesccam_params
-      params.fetch(:ordenesccam, {})
+      params.require(:ordenesccam).permit(:fechaentrega, :idcotizacion, :colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
     end
 end

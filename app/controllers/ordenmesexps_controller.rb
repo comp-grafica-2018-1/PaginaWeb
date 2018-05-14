@@ -69,6 +69,6 @@ class OrdenmesexpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ordenmesexp_params
-      params.fetch(:ordenmesexp, {})
+      params.require(:ordenmesexp).permit(:fechaentrega, :idcotizacion, :numeropuestos, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
     end
 end

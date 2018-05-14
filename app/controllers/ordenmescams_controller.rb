@@ -69,6 +69,6 @@ class OrdenmescamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ordenmescam_params
-      params.fetch(:ordenmescam, {})
+      params.require(:ordenmescam).permit(:fechaentrega, :idcotizacion, :colchon, :material, :color, :cajonsuperior, :repisa, :correo, :nombre, :cantidad, :confirmacion)
     end
 end

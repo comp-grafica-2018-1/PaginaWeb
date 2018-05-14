@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514055248) do
+ActiveRecord::Schema.define(version: 20180514062635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.string "color"
     t.string "cantidad"
     t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "cotizesccams", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.string "color"
     t.string "cantidad"
     t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "cotizmescams", force: :cascade do |t|
@@ -52,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.string "repisa"
     t.string "cantidad"
     t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "cotizmesexps", force: :cascade do |t|
@@ -64,6 +67,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.string "numeropuestos"
     t.string "cantidad"
     t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "ordenclomuls", force: :cascade do |t|
@@ -80,6 +84,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.string "cantidad"
     t.string "altura"
     t.string "anchura"
+    t.string "clavecompra"
   end
 
   create_table "ordenesccams", force: :cascade do |t|
@@ -95,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.date "fechacotizacion"
     t.string "cantidad"
     t.string "colchon"
+    t.string "clavecompra"
   end
 
   create_table "ordenmescams", force: :cascade do |t|
@@ -112,6 +118,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.string "colchon"
     t.string "cajonsuperior"
     t.string "repisa"
+    t.string "clavecompra"
   end
 
   create_table "ordenmesexps", force: :cascade do |t|
@@ -127,6 +134,7 @@ ActiveRecord::Schema.define(version: 20180514055248) do
     t.date "fechacotizacion"
     t.string "cantidad"
     t.string "numeropuestos"
+    t.string "clavecompra"
   end
 
 end

@@ -32,6 +32,14 @@ class CotizesccamsController < ApplicationController
     @cotizesccam = Cotizesccam.new(cotizesccam_params)
     @cotizesccam.confirmacion = 'Por confirmar'
 
+    numerocaracteresclave = 20
+    caracteresclavecompra = %w{ 0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z }
+    @cotizesccam.clavecompra = ''
+    numerocaracteresclave.times do
+      indiceletraescogida = rand(caracteresclavecompra.length)
+      @cotizesccam.clavecompra = @cotizesccam.clavecompra + caracteresclavecompra[indiceletraescogida]
+    end
+
     respond_to do |format|
       if @cotizesccam.save
         RemisorCotizacionesMailer.confirmacioncotizesccam(@cotizesccam).deliver_now
@@ -76,6 +84,6 @@ class CotizesccamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizesccam_params
-      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
+      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
     end
 end
