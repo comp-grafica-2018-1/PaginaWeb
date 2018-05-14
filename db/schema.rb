@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514054046) do
+ActiveRecord::Schema.define(version: 20180514054633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20180514054046) do
     t.string "nombre"
     t.date "fechacotizacion"
     t.string "cantidad"
+    t.string "altura"
+    t.string "anchura"
   end
 
   create_table "ordenesccams", force: :cascade do |t|
