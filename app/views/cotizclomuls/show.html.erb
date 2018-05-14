@@ -38,7 +38,13 @@
 <% case @cotizclomul.confirmacion %>
   <% when 'Por confirmar' %>
     <%= form_for "", url: @cotizclomul, role: "Search", method: :get do %>
-      <%= text_field_tag :identificador, @cotizclomul.id, readonly: true %>
+      <%= hidden_field_tag :identificador, @cotizclomul.id %>
+      <%= submit_tag "Enviar Clave de Confirmación de orden de compra" %>
+    <% end %>
+
+    <%= form_for "", url: @cotizclomul, role: "Search", method: :get do %>
+      <%= hidden_field_tag :identificador, @cotizclomul.id %>
+      <%= password_field_tag :clavecompra, nil %>
       <%= submit_tag "Confirmar orden de compra" %>
     <% end %>
   <% else %>

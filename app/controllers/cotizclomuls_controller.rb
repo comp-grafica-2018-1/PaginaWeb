@@ -15,7 +15,17 @@ class CotizclomulsController < ApplicationController
   # GET /cotizclomuls/1
   # GET /cotizclomuls/1.json
   def show
-    if params[:identificador]
+    if params[:identificador] && params[:clavecompra]
+      @identificador = params[:identificador]
+      @cotizclomul = Cotizclomul.find(@identificador)
+      if params[:clavecompra].to_s == @cotizclomul.clavecompra.to_s
+        @ordenclomul = Ordenclomul.new
+        @ordenclomul.save
+        redirect_to @cotizclomul, notice: 'Se ha registrado correctamente la orden de compra. Muchas gracias.'
+      else
+        redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+      end
+    elsif params[:identificador]
       @identificador = params[:identificador]
       @cotizclomul = Cotizclomul.find(@identificador)
       RemisorClavesMailer.envioclavecotizclomul(@cotizclomul).deliver_now
