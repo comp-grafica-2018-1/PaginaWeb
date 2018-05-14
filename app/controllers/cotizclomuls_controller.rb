@@ -20,8 +20,22 @@ class CotizclomulsController < ApplicationController
       @cotizclomul = Cotizclomul.find(@identificador)
       if params[:clavecompra].to_s == @cotizclomul.clavecompra.to_s
         @ordenclomul = Ordenclomul.new
+        @ordenclomul.fechasolicitud = Time.now
+        @ordenclomul.fechaentrega = Time.now + 15.days
+        @ordenclomul.idcotizacion = @cotizclomul.id
+        @ordenclomul.altura = @cotizclomul.altura
+        @ordenclomul.anchura = @cotizclomul.anchura
+        @ordenclomul.color = @cotizclomul.color
+        @ordenclomul.material = @cotizclomul.material
+        @ordenclomul.correo = @cotizclomul.correo
+        @ordenclomul.nombre = @cotizclomul.nombre
+        @ordenclomul.fechacotizacion = @cotizclomul.created_at
+        @ordenclomul.cantidad = @cotizclomul.cantidad
         @ordenclomul.save
-        redirect_to @cotizclomul, notice: 'Se ha registrado correctamente la orden de compra. Muchas gracias.'
+        @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
+        @cotizclomul.save
+        redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+        RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
       else
         redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
       end

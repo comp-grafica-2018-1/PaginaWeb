@@ -1,0 +1,20 @@
+<h1>Informe de Detalles de tu Orden de Compra</h1>
+
+<p>Cordial saludo, <%= @ordencompra.nombre %>. Por medio del presente mensaje, le confirmamos los detalles de su orden de compra:</p>
+
+<ul>
+	<li>Número de Orden de Compra (Este número identificador consiste en una referencia de esta transacción): <%= @ordencompra.id %></li>
+	<li>Fecha de Solicitud: <%= @ordencompra.fechasolicitud %></li>
+	<li>Fecha de Entrega: <%= @ordencompra.fechaentrega %></li>
+	<li>Número de Cotización (Este número identificador consiste en una referencia de la cotización realizada previamente): <%= @ordencompra.idcotizacion %></li>
+	<li>Mueble Solicitado: Closet Multifuncional</li>
+	<li>Cantidad: <%= @ordencompra.cantidad %></li>
+	<li>Altura (en metros): <%= @ordencompra.altura %></li>
+	<li>Anchura (en metros): <%= @ordencompra.anchura %></li>
+	<li>Material: <%= @ordencompra.material %></li>
+	<li>Color: <%= @ordencompra.color %></li>
+</ul>
+
+<p>Ingenio Funcional permite visualizar el producto definido en esta cotización, para hacerlo, le pedimos visitar la sección Mis Cotizaciones y consultar esta cotización por medio de la dirección de correo electrónico proporcionada en esta cotización e identificándola por medio del número de cotización dado previamente en este mensaje.</p>
+
+<p>Muchas gracias por su atención.</p>
