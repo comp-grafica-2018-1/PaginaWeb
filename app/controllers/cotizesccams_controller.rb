@@ -4,7 +4,12 @@ class CotizesccamsController < ApplicationController
   # GET /cotizesccams
   # GET /cotizesccams.json
   def index
-    @cotizesccams = Cotizesccam.all
+    #@cotizesccams = Cotizesccam.all
+    @cotizesccams = Cotizesccam.where("correo = ''")
+    if params[:correo]
+      @correoelectronico = params[:correo]
+      @cotizesccams = Cotizesccam.where("correo = ?", @correoelectronico)
+    end
   end
 
   # GET /cotizesccams/1
