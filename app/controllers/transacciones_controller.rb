@@ -1,10 +1,7 @@
 class TransaccionesController < ApplicationController
-  def index
+  def cotizaciones
   end
 
-  def miscotizaciones
-  end
-
-  def mispedidos
+  def consultas
   end
 end

@@ -4,7 +4,8 @@ class CotizclomulsController < ApplicationController
   # GET /cotizclomuls
   # GET /cotizclomuls.json
   def index
-    @cotizclomuls = Cotizclomul.all
+    #@cotizclomuls = Cotizclomul.all
+    @cotizclomuls = Cotizclomul.where("correo = ''")
     if params[:search]
       @search_term = params[:search]
       @cotizclomuls = Cotizclomul.where("correo = ?", @search_term)

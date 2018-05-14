@@ -1,18 +1,13 @@
 require 'test_helper'
 
 class TransaccionesControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get transacciones_index_url
+  test "should get cotizaciones" do
+    get transacciones_cotizaciones_url
     assert_response :success
   end
 
-  test "should get miscotizaciones" do
-    get transacciones_miscotizaciones_url
-    assert_response :success
-  end
-
-  test "should get mispedidos" do
-    get transacciones_mispedidos_url
+  test "should get consultas" do
+    get transacciones_consultas_url
     assert_response :success
   end
 

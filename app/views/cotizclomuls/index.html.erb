@@ -2,6 +2,11 @@
 
 <h1>Cotizclomuls</h1>
 
+<%= form_for "", url: cotizclomuls_path, role: "Search", method: :get do %>
+  <%= text_field_tag :search, @search_term, placeholder: "Indica tu dirección de correo electrónico" %>
+  <%= submit_tag "Consultar Cotizaciones" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -36,4 +41,7 @@
 
 <br>
 
-<%= link_to 'New Cotizclomul', new_cotizclomul_path %>
+<!-- <%= link_to 'New Cotizclomul', new_cotizclomul_path %> -->
+<%= link_to 'Inicio', inicio_index_path %>
+<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
+<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>

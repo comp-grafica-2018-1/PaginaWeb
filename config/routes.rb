@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'transacciones/cotizaciones'
+
+  get 'transacciones/consultas'
+
   get 'transacciones/index'
 
   get 'transacciones/miscotizaciones'
