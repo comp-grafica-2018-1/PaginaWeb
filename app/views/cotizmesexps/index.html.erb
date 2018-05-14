@@ -2,6 +2,11 @@
 
 <h1>Cotizmesexps</h1>
 
+<%= form_for "", url: cotizmesexps_path, role: "Search", method: :get do %>
+  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
+  <%= submit_tag "Consultar Cotizaciones" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -34,4 +39,7 @@
 
 <br>
 
-<%= link_to 'New Cotizmesexp', new_cotizmesexp_path %>
+<!-- <%= link_to 'New Cotizmesexp', new_cotizmesexp_path %> -->
+<%= link_to 'Inicio', inicio_index_path %>
+<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
+<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>
