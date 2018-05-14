@@ -40,5 +40,23 @@
   <%= @cotizmescam.cantidad %>
 </p>
 
+<% case @cotizmescam.confirmacion %>
+  <% when 'Por confirmar' %>
+    <%= form_for "", url: @cotizmescam, role: "Search", method: :get do %>
+      <%= hidden_field_tag :identificador, @cotizmescam.id %>
+      <%= submit_tag "Enviar Clave de Confirmación de orden de compra" %>
+    <% end %>
+
+    <%= form_for "", url: @cotizmescam, role: "Search", method: :get do %>
+      <%= hidden_field_tag :identificador, @cotizmescam.id %>
+      <%= password_field_tag :clavecompra, nil %>
+      <%= submit_tag "Confirmar orden de compra" %>
+    <% end %>
+  <% else %>
+  <p>
+    <strong>Confirmación de Orden de Compra: SÍ</strong>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_cotizmescam_path(@cotizmescam) %> |
 <%= link_to 'Back', cotizmescams_path %>

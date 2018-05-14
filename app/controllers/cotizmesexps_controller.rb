@@ -15,6 +15,35 @@ class CotizmesexpsController < ApplicationController
   # GET /cotizmesexps/1
   # GET /cotizmesexps/1.json
   def show
+    if params[:identificador] && params[:clavecompra]
+      @identificador = params[:identificador]
+      @cotizmesexp = Cotizmesexp.find(@identificador)
+      if params[:clavecompra].to_s == @cotizmesexp.clavecompra.to_s
+        @ordenmesexp = Ordenclomul.new
+        @ordenmesexp.fechasolicitud = Time.now
+        @ordenmesexp.fechaentrega = Time.now + 15.days
+        @ordenmesexp.idcotizacion = @cotizmesexp.id
+        @ordenmesexp.color = @cotizmesexp.color
+        @ordenmesexp.material = @cotizmesexp.material
+        @ordenmesexp.numeropuestos = @cotizmesexp.numeropuestos
+        @ordenmesexp.correo = @cotizmesexp.correo
+        @ordenmesexp.nombre = @cotizmesexp.nombre
+        @ordenmesexp.fechacotizacion = @cotizmesexp.created_at
+        @ordenmesexp.cantidad = @cotizmesexp.cantidad
+        @ordenmesexp.save
+        @cotizmesexp.confirmacion = 'COMPRA CONFIRMADA'
+        @cotizmesexp.save
+        redirect_to @cotizmesexp, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+        RemisorOrdenesCompraMailer.confirmacionordenmesexp(@ordenmesexp).deliver_now
+      else
+        redirect_to @cotizmesexp, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+      end
+    elsif params[:identificador]
+      @identificador = params[:identificador]
+      @cotizmesexp = Cotizmesexp.find(@identificador)
+      RemisorClavesMailer.envioclavecotizmesexp(@cotizmesexp).deliver_now
+      redirect_to @cotizmesexp
+    end
   end
 
   # GET /cotizmesexps/new
