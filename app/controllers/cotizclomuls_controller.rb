@@ -6,9 +6,9 @@ class CotizclomulsController < ApplicationController
   def index
     #@cotizclomuls = Cotizclomul.all
     @cotizclomuls = Cotizclomul.where("correo = ''")
-    if params[:search]
-      @search_term = params[:search]
-      @cotizclomuls = Cotizclomul.where("correo = ?", @search_term)
+    if params[:correo]
+      @correoelectronico = params[:correo]
+      @cotizclomuls = Cotizclomul.where("correo = ?", @correoelectronico)
     end
   end
 

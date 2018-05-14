@@ -3,7 +3,7 @@
 <h1>Cotizclomuls</h1>
 
 <%= form_for "", url: cotizclomuls_path, role: "Search", method: :get do %>
-  <%= text_field_tag :search, @search_term, placeholder: "Indica tu dirección de correo electrónico" %>
+  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
   <%= submit_tag "Consultar Cotizaciones" %>
 <% end %>
 
