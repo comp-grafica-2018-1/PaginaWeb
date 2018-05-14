@@ -1,0 +1,2 @@
+class Ordenesccam < ApplicationRecord
+end

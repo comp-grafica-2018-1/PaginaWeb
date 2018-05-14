@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :ordenmesexps
+  resources :ordenmescams
+  resources :ordenesccams
+  resources :ordenclomuls
   get 'transacciones/cotizaciones'
 
   get 'transacciones/consultas'
