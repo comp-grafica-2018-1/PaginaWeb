@@ -30,6 +30,7 @@ class CotizclomulsController < ApplicationController
   # POST /cotizclomuls.json
   def create
     @cotizclomul = Cotizclomul.new(cotizclomul_params)
+    @cotizclomul.confirmacion = 'Por confirmar'
 
     respond_to do |format|
       if @cotizclomul.save
@@ -75,6 +76,6 @@ class CotizclomulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizclomul_params
-      params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre, :cantidad)
+      params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
     end
 end

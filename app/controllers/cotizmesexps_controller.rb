@@ -30,6 +30,7 @@ class CotizmesexpsController < ApplicationController
   # POST /cotizmesexps.json
   def create
     @cotizmesexp = Cotizmesexp.new(cotizmesexp_params)
+    @cotizmesexp.confirmacion = 'Por confirmar'
 
     respond_to do |format|
       if @cotizmesexp.save
@@ -75,6 +76,6 @@ class CotizmesexpsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizmesexp_params
-      params.require(:cotizmesexp).permit(:numeropuestos, :material, :color, :correo, :nombre, :cantidad)
+      params.require(:cotizmesexp).permit(:numeropuestos, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
     end
 end

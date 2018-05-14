@@ -30,6 +30,7 @@ class CotizesccamsController < ApplicationController
   # POST /cotizesccams.json
   def create
     @cotizesccam = Cotizesccam.new(cotizesccam_params)
+    @cotizesccam.confirmacion = 'Por confirmar'
 
     respond_to do |format|
       if @cotizesccam.save
@@ -75,6 +76,6 @@ class CotizesccamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizesccam_params
-      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad)
+      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
     end
 end
