@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514054633) do
+ActiveRecord::Schema.define(version: 20180514055248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20180514054633) do
     t.string "nombre"
     t.date "fechacotizacion"
     t.string "cantidad"
+    t.string "colchon"
   end
 
   create_table "ordenmescams", force: :cascade do |t|
@@ -108,6 +109,9 @@ ActiveRecord::Schema.define(version: 20180514054633) do
     t.string "nombre"
     t.date "fechacotizacion"
     t.string "cantidad"
+    t.string "colchon"
+    t.string "cajonsuperior"
+    t.string "repisa"
   end
 
   create_table "ordenmesexps", force: :cascade do |t|
@@ -122,6 +126,7 @@ ActiveRecord::Schema.define(version: 20180514054633) do
     t.string "nombre"
     t.date "fechacotizacion"
     t.string "cantidad"
+    t.string "numeropuestos"
   end
 
 end
