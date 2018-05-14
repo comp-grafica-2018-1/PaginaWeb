@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180514051950) do
+ActiveRecord::Schema.define(version: 20180514053006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,21 +69,33 @@ ActiveRecord::Schema.define(version: 20180514051950) do
   create_table "ordenclomuls", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
   end
 
   create_table "ordenesccams", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
   end
 
   create_table "ordenmescams", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
   end
 
   create_table "ordenmesexps", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
   end
 
 end
