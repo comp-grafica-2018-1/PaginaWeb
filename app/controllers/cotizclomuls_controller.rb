@@ -15,6 +15,12 @@ class CotizclomulsController < ApplicationController
   # GET /cotizclomuls/1
   # GET /cotizclomuls/1.json
   def show
+    if params[:identificador]
+      @identificador = params[:identificador]
+      @cotizclomul = Cotizclomul.find(@identificador)
+      RemisorClavesMailer.envioclavecotizclomul(@cotizclomul).deliver_now
+      redirect_to @cotizclomul
+    end
   end
 
   # GET /cotizclomuls/new
