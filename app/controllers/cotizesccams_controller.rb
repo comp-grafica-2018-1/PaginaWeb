@@ -15,6 +15,35 @@ class CotizesccamsController < ApplicationController
   # GET /cotizesccams/1
   # GET /cotizesccams/1.json
   def show
+    if params[:identificador] && params[:clavecompra]
+      @identificador = params[:identificador]
+      @cotizesccam = Cotizesccam.find(@identificador)
+      if params[:clavecompra].to_s == @cotizesccam.clavecompra.to_s
+        @ordenesccam = Ordenclomul.new
+        @ordenesccam.fechasolicitud = Time.now
+        @ordenesccam.fechaentrega = Time.now + 15.days
+        @ordenesccam.idcotizacion = @cotizesccam.id
+        @ordenesccam.color = @cotizesccam.color
+        @ordenesccam.material = @cotizesccam.material
+        @ordenesccam.colchon = @cotizesccam.colchon
+        @ordenesccam.correo = @cotizesccam.correo
+        @ordenesccam.nombre = @cotizesccam.nombre
+        @ordenesccam.fechacotizacion = @cotizesccam.created_at
+        @ordenesccam.cantidad = @cotizesccam.cantidad
+        @ordenesccam.save
+        @cotizesccam.confirmacion = 'COMPRA CONFIRMADA'
+        @cotizesccam.save
+        redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+        RemisorOrdenesCompraMailer.confirmacionordenesccam(@ordenesccam).deliver_now
+      else
+        redirect_to @cotizesccam, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+      end
+    elsif params[:identificador]
+      @identificador = params[:identificador]
+      @cotizesccam = Cotizesccam.find(@identificador)
+      RemisorClavesMailer.envioclavecotizesccam(@cotizesccam).deliver_now
+      redirect_to @cotizesccam
+    end
   end
 
   # GET /cotizesccams/new
