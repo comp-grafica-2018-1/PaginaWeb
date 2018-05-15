@@ -4,7 +4,12 @@ class OrdenclomulsController < ApplicationController
   # GET /ordenclomuls
   # GET /ordenclomuls.json
   def index
-    @ordenclomuls = Ordenclomul.all
+    #@ordenclomuls = Ordenclomul.all
+    @ordenclomuls = Ordenclomul.where("correo = ''")
+    if params[:correo]
+      @correoelectronico = params[:correo]
+      @ordenclomuls = Ordenclomul.where("correo = ?", @correoelectronico)
+    end
   end
 
   # GET /ordenclomuls/1

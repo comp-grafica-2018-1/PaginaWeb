@@ -2,9 +2,22 @@
 
 <h1>Ordenmesexps</h1>
 
+<%= form_for "", url: ordenmesexps_path, role: "Search", method: :get do %>
+  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
+  <%= submit_tag "Consultar Órdenes de Compra" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
+      <th>Fecha de Solicitud</th>
+      <th>Fecha de Entrega</th>
+      <th>Número de puestos</th>
+      <th>Material</th>
+      <th>Color</th>
+      <th>Correo</th>
+      <th>Nombre</th>
+      <th>Cantidad</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +25,14 @@
   <tbody>
     <% @ordenmesexps.each do |ordenmesexp| %>
       <tr>
+        <td><%= ordenmesexp.created_at %></td>
+        <td><%= ordenmesexp.fechaentrega %></td>
+        <td><%= ordenmesexp.numeropuestos %></td>
+        <td><%= ordenmesexp.material %></td>
+        <td><%= ordenmesexp.color %></td>
+        <td><%= ordenmesexp.correo %></td>
+        <td><%= ordenmesexp.nombre %></td>
+        <td><%= ordenmesexp.cantidad %></td>
         <td><%= link_to 'Show', ordenmesexp %></td>
         <td><%= link_to 'Edit', edit_ordenmesexp_path(ordenmesexp) %></td>
         <td><%= link_to 'Destroy', ordenmesexp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -22,4 +43,7 @@
 
 <br>
 
-<%= link_to 'New Ordenmesexp', new_ordenmesexp_path %>
+<!-- <%= link_to 'New Ordenmesexp', new_ordenmesexp_path %> -->
+<%= link_to 'Inicio', inicio_index_path %>
+<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
+<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>

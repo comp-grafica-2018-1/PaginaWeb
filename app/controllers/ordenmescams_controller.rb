@@ -4,7 +4,12 @@ class OrdenmescamsController < ApplicationController
   # GET /ordenmescams
   # GET /ordenmescams.json
   def index
-    @ordenmescams = Ordenmescam.all
+    #@ordenmescams = Ordenmescam.all
+    @ordenmescams = Ordenmescam.where("correo = ''")
+    if params[:correo]
+      @correoelectronico = params[:correo]
+      @ordenmescams = Ordenmescam.where("correo = ?", @correoelectronico)
+    end
   end
 
   # GET /ordenmescams/1
