@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ordenesccams</h1>
+
+<%= form_for "", url: ordenesccams_path, role: "Search", method: :get do %>
+  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
+  <%= submit_tag "Consultar Órdenes de Compra" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha de Solicitud</th>
+      <th>Fecha de Entrega</th>
+      <th>Colchón</th>
+      <th>Material</th>
+      <th>Color</th>
+      <th>Correo</th>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordenesccams.each do |ordenesccam| %>
+      <tr>
+        <td><%= ordenesccam.created_at %></td>
+        <td><%= ordenesccam.fechaentrega %></td>
+        <td><%= ordenesccam.colchon %></td>
+        <td><%= ordenesccam.material %></td>
+        <td><%= ordenesccam.color %></td>
+        <td><%= ordenesccam.correo %></td>
+        <td><%= ordenesccam.nombre %></td>
+        <td><%= ordenesccam.cantidad %></td>
+        <td><%= link_to 'Show', ordenesccam %></td>
+        <td><%= link_to 'Edit', edit_ordenesccam_path(ordenesccam) %></td>
+        <td><%= link_to 'Destroy', ordenesccam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!-- <%= link_to 'New Ordenesccam', new_ordenesccam_path %> -->
+<%= link_to 'Inicio', inicio_index_path %>
+<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
+<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>

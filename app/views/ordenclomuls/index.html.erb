@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ordenclomuls</h1>
+
+<%= form_for "", url: ordenclomuls_path, role: "Search", method: :get do %>
+  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
+  <%= submit_tag "Consultar Órdenes de Compra" %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fecha de Solicitud</th>
+      <th>Fecha de Entrega</th>
+      <th>Altura (en metros)</th>
+      <th>Anchura (en metros)</th>
+      <th>Material</th>
+      <th>Color</th>
+      <th>Correo</th>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordenclomuls.each do |ordenclomul| %>
+      <tr>
+        <td><%= ordenclomul.created_at %></td>
+        <td><%= ordenclomul.fechaentrega %></td>
+        <td><%= ordenclomul.altura %></td>
+        <td><%= ordenclomul.anchura %></td>
+        <td><%= ordenclomul.material %></td>
+        <td><%= ordenclomul.color %></td>
+        <td><%= ordenclomul.correo %></td>
+        <td><%= ordenclomul.nombre %></td>
+        <td><%= ordenclomul.cantidad %></td>
+        <td><%= link_to 'Show', ordenclomul %></td>
+        <td><%= link_to 'Edit', edit_ordenclomul_path(ordenclomul) %></td>
+        <td><%= link_to 'Destroy', ordenclomul, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<!-- <%= link_to 'New Ordenclomul', new_ordenclomul_path %> -->
+<%= link_to 'Inicio', inicio_index_path %>
+<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
+<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>

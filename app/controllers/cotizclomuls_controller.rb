@@ -15,6 +15,36 @@ class CotizclomulsController < ApplicationController
   # GET /cotizclomuls/1
   # GET /cotizclomuls/1.json
   def show
+    if params[:identificador] && params[:clavecompra]
+      @identificador = params[:identificador]
+      @cotizclomul = Cotizclomul.find(@identificador)
+      if params[:clavecompra].to_s == @cotizclomul.clavecompra.to_s
+        @ordenclomul = Ordenclomul.new
+        @ordenclomul.fechasolicitud = Time.now
+        @ordenclomul.fechaentrega = Time.now + 15.days
+        @ordenclomul.idcotizacion = @cotizclomul.id
+        @ordenclomul.altura = @cotizclomul.altura
+        @ordenclomul.anchura = @cotizclomul.anchura
+        @ordenclomul.color = @cotizclomul.color
+        @ordenclomul.material = @cotizclomul.material
+        @ordenclomul.correo = @cotizclomul.correo
+        @ordenclomul.nombre = @cotizclomul.nombre
+        @ordenclomul.fechacotizacion = @cotizclomul.created_at
+        @ordenclomul.cantidad = @cotizclomul.cantidad
+        @ordenclomul.save
+        @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
+        @cotizclomul.save
+        redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+        RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
+      else
+        redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+      end
+    elsif params[:identificador]
+      @identificador = params[:identificador]
+      @cotizclomul = Cotizclomul.find(@identificador)
+      RemisorClavesMailer.envioclavecotizclomul(@cotizclomul).deliver_now
+      redirect_to @cotizclomul
+    end
   end
 
   # GET /cotizclomuls/new
@@ -30,6 +60,15 @@ class CotizclomulsController < ApplicationController
   # POST /cotizclomuls.json
   def create
     @cotizclomul = Cotizclomul.new(cotizclomul_params)
+    @cotizclomul.confirmacion = 'Por confirmar'
+
+    numerocaracteresclave = 20
+    caracteresclavecompra = %w{ 0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z }
+    @cotizclomul.clavecompra = ''
+    numerocaracteresclave.times do
+      indiceletraescogida = rand(caracteresclavecompra.length)
+      @cotizclomul.clavecompra = @cotizclomul.clavecompra + caracteresclavecompra[indiceletraescogida]
+    end
 
     respond_to do |format|
       if @cotizclomul.save
@@ -75,6 +114,6 @@ class CotizclomulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizclomul_params
-      params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre, :cantidad)
+      params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
     end
 end

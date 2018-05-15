@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180512175957) do
+ActiveRecord::Schema.define(version: 20180514062635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20180512175957) do
     t.string "material"
     t.string "color"
     t.string "cantidad"
+    t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "cotizesccams", force: :cascade do |t|
@@ -36,6 +38,8 @@ ActiveRecord::Schema.define(version: 20180512175957) do
     t.string "material"
     t.string "color"
     t.string "cantidad"
+    t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "cotizmescams", force: :cascade do |t|
@@ -49,6 +53,8 @@ ActiveRecord::Schema.define(version: 20180512175957) do
     t.string "cajonsuperior"
     t.string "repisa"
     t.string "cantidad"
+    t.string "confirmacion"
+    t.string "clavecompra"
   end
 
   create_table "cotizmesexps", force: :cascade do |t|
@@ -60,6 +66,75 @@ ActiveRecord::Schema.define(version: 20180512175957) do
     t.string "color"
     t.string "numeropuestos"
     t.string "cantidad"
+    t.string "confirmacion"
+    t.string "clavecompra"
+  end
+
+  create_table "ordenclomuls", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
+    t.string "color"
+    t.string "material"
+    t.string "correo"
+    t.string "nombre"
+    t.date "fechacotizacion"
+    t.string "cantidad"
+    t.string "altura"
+    t.string "anchura"
+    t.string "clavecompra"
+  end
+
+  create_table "ordenesccams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
+    t.string "color"
+    t.string "material"
+    t.string "correo"
+    t.string "nombre"
+    t.date "fechacotizacion"
+    t.string "cantidad"
+    t.string "colchon"
+    t.string "clavecompra"
+  end
+
+  create_table "ordenmescams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
+    t.string "color"
+    t.string "material"
+    t.string "correo"
+    t.string "nombre"
+    t.date "fechacotizacion"
+    t.string "cantidad"
+    t.string "colchon"
+    t.string "cajonsuperior"
+    t.string "repisa"
+    t.string "clavecompra"
+  end
+
+  create_table "ordenmesexps", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "fechasolicitud"
+    t.date "fechaentrega"
+    t.integer "idcotizacion"
+    t.string "color"
+    t.string "material"
+    t.string "correo"
+    t.string "nombre"
+    t.date "fechacotizacion"
+    t.string "cantidad"
+    t.string "numeropuestos"
+    t.string "clavecompra"
   end
 
 end

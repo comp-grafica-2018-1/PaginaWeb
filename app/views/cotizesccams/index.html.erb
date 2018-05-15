@@ -16,6 +16,7 @@
       <th>Correo</th>
       <th>Nombre</th>
       <th>Cantidad</th>
+      <th>Confirmación de Orden de Compra</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,6 +30,7 @@
         <td><%= cotizesccam.correo %></td>
         <td><%= cotizesccam.nombre %></td>
         <td><%= cotizesccam.cantidad %></td>
+        <td><%= cotizesccam.confirmacion %></td>
         <td><%= link_to 'Show', cotizesccam %></td>
         <td><%= link_to 'Edit', edit_cotizesccam_path(cotizesccam) %></td>
         <td><%= link_to 'Destroy', cotizesccam, method: :delete, data: { confirm: 'Are you sure?' } %></td>

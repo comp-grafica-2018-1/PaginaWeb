@@ -1,0 +1,2 @@
+class Ordenmesexp < ApplicationRecord
+end

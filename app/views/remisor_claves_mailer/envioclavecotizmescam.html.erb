@@ -1,0 +1,14 @@
+<h1>Clave de Confirmación de Orden de Compra</h1>
+
+<p>Cordial saludo, <%= @cotizacion.nombre %>. Por medio del presente mensaje, le indicamos su clave para que pueda confirmar su orden de compra de esta cotización (Esto se hace con el propósito de tener certeza de que el cliente quiere confirmar esta compra y es importante asegurarnos que ningún otro cliente solicitó esta compra de forma indebida):</p>
+
+<ul>
+	<li>Número de Cotización (Este número identificador consiste en una referencia de esta cotización, para cuando desee confirmar esta orden de compra): <%= @cotizacion.id %></li>
+	<li>Fecha de Solicitud: <%= @cotizacion.created_at %></li>
+	<li>Mueble Solicitado: Mesa Cama</li>
+	<li>CLAVE DE CONFIRMACIÓN PARA ORDEN DE COMPRA: <b><%= @cotizacion.clavecompra %></b></li>
+</ul>
+
+<p>Se le pide al usuario que copie y pegue esta clave en la solicitud de compra para confirmar la orden de compra de la cotización en cuestión (<b>Número de Cotización: <%= @cotizacion.id %></b>).</p>
+
+<p>Muchas gracias por su atención.</p>

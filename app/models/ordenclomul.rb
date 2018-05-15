@@ -1,0 +1,2 @@
+class Ordenclomul < ApplicationRecord
+end

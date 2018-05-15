@@ -15,6 +15,35 @@ class CotizesccamsController < ApplicationController
   # GET /cotizesccams/1
   # GET /cotizesccams/1.json
   def show
+    if params[:identificador] && params[:clavecompra]
+      @identificador = params[:identificador]
+      @cotizesccam = Cotizesccam.find(@identificador)
+      if params[:clavecompra].to_s == @cotizesccam.clavecompra.to_s
+        @ordenesccam = Ordenclomul.new
+        @ordenesccam.fechasolicitud = Time.now
+        @ordenesccam.fechaentrega = Time.now + 15.days
+        @ordenesccam.idcotizacion = @cotizesccam.id
+        @ordenesccam.color = @cotizesccam.color
+        @ordenesccam.material = @cotizesccam.material
+        @ordenesccam.colchon = @cotizesccam.colchon
+        @ordenesccam.correo = @cotizesccam.correo
+        @ordenesccam.nombre = @cotizesccam.nombre
+        @ordenesccam.fechacotizacion = @cotizesccam.created_at
+        @ordenesccam.cantidad = @cotizesccam.cantidad
+        @ordenesccam.save
+        @cotizesccam.confirmacion = 'COMPRA CONFIRMADA'
+        @cotizesccam.save
+        redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+        RemisorOrdenesCompraMailer.confirmacionordenesccam(@ordenesccam).deliver_now
+      else
+        redirect_to @cotizesccam, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+      end
+    elsif params[:identificador]
+      @identificador = params[:identificador]
+      @cotizesccam = Cotizesccam.find(@identificador)
+      RemisorClavesMailer.envioclavecotizesccam(@cotizesccam).deliver_now
+      redirect_to @cotizesccam
+    end
   end
 
   # GET /cotizesccams/new
@@ -30,6 +59,15 @@ class CotizesccamsController < ApplicationController
   # POST /cotizesccams.json
   def create
     @cotizesccam = Cotizesccam.new(cotizesccam_params)
+    @cotizesccam.confirmacion = 'Por confirmar'
+
+    numerocaracteresclave = 20
+    caracteresclavecompra = %w{ 0 1 2 3 4 5 6 7 8 9 a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z }
+    @cotizesccam.clavecompra = ''
+    numerocaracteresclave.times do
+      indiceletraescogida = rand(caracteresclavecompra.length)
+      @cotizesccam.clavecompra = @cotizesccam.clavecompra + caracteresclavecompra[indiceletraescogida]
+    end
 
     respond_to do |format|
       if @cotizesccam.save
@@ -75,6 +113,6 @@ class CotizesccamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cotizesccam_params
-      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad)
+      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
     end
 end

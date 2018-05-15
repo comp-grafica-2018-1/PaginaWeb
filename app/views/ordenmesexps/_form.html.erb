@@ -1,0 +1,17 @@
+<%= form_with(model: ordenmesexp, local: true) do |form| %>
+  <% if ordenmesexp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ordenmesexp.errors.count, "error") %> prohibited this ordenmesexp from being saved:</h2>
+
+      <ul>
+      <% ordenmesexp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

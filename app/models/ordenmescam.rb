@@ -1,0 +1,2 @@
+class Ordenmescam < ApplicationRecord
+end
