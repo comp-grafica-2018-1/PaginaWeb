@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'catalogo/index'
+
+  get 'catalogo/muebleclomul'
+
+  get 'catalogo/muebleesccam'
+
+  get 'catalogo/mueblemescam'
+
+  get 'catalogo/mueblemesexp'
+
   resources :ordenmesexps
   resources :ordenmescams
   resources :ordenesccams
