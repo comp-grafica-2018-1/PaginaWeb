@@ -2,10 +2,12 @@
 <html>
     <title>PaginaWeb</title>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <!-- Custom styles -->
-    <%= stylesheet_link_tag 'agency' %>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Custom styles -->
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'agency' %>
     
     <!-- Bootstrap core CSS -->
     <link href="https://blackrockdigital.github.io/startbootstrap-agency/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -21,26 +23,39 @@
   <body>
   	<!-- Navigation -->
   	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      	<div class="container">
-        	<a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
-        	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">MENÚ
-          	<i class="fa fa-bars"></i>
-        	</button>
-        	<div class="collapse navbar-collapse" id="navbarResponsive">
-          		<ul class="navbar-nav text-uppercase ml-auto">
-            		<li class="nav-item">
-              			<a class="nav-link js-scroll-trigger" href="#services">NUESTROS PRODUCTOS</a>
-            		</li>
-            		<li class="nav-item">
-              			<a class="nav-link js-scroll-trigger" href="#portfolio">MIS COTIZACIONES Y PEDIDOS</a>
-            		</li>
-            		<li class="nav-item">
-              			<a class="nav-link js-scroll-trigger" href="#about">CONTACTO</a>
-            		</li>
-          		</ul>
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="../"><%= image_tag("LogoIngenioFuncional.png", :width => "250", :alt => "Logo de Ingenio Funcional") %></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">MENÚ
+          <i class="fa fa-bars"></i>
+        </button>
+      	<div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/catalogo/index.html">NUESTROS PRODUCTOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">MIS COTIZACIONES Y PEDIDOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about">CONTACTO</a>
+            </li>
+          </ul>
     		</div>
-      	</div>
+      </div>
     </nav>
   	<%= yield %>
+        <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Ingenio Funcional 2018</span>
+          </div>
+          <div class="col-md-8">
+            <span class="copyright">Las imágenes de fondo son de carácter ilustrativo, y son utilizadas de forma libre según la política de uso de <a href="https://www.freepik.es/">Freepik</a></span>
+          </div>
+        </div>
+      </div>
+    </footer>
   	</body>
 </html>
