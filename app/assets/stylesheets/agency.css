@@ -2,11 +2,68 @@
  * Start Bootstrap - Agency v4.1.1 (https://startbootstrap.com/template-overviews/agency)
  * Copyright 2013-2018 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
- */
+*/
 
 body{
   overflow-x: hidden;
   font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#barraNavegacion{
+  background-color: rgba(200, 0, 0, 0.75);
+  padding: 25px 0px 25px 0px;
+  margin: auto;
+  border: none;
+}
+
+#barraNavegacion .logotipo{
+  background-color: transparent;
+  padding: 10px;
+  margin: auto;
+}
+
+#barraNavegacion .nav-link{
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: white;
+  font-family: 'Montserrat';
+  padding: 12px;
+  text-align: center;
+}
+
+#barraNavegacion .nav-link:hover{
+  color: #fed136;
+  background-color: rgba(128, 0, 0, 1.0);
+}
+
+#barraNavegacion .lista{
+  
+}
+
+/* Adaptacion al cambio de tamaño para pantallas de tamano mediano */
+@media (max-width: 780px) and (min-width: 480px){
+  #barraNavegacion .nav-link{
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 10px;
+  }
+}
+
+/* Adaptacion al cambio de tamaño para pantallas de tamano pequeno */
+@media (max-width: 480px){
+  #barraNavegacion .logotipo{
+    margin: auto;
+  }
+
+  #barraNavegacion .nav-link{
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 7px;
+  }
+
+  #barraNavegacion .lista{
+    margin: auto;
+  }
 }
 
 p{
@@ -49,11 +106,13 @@ section h3.section-subheading{
   font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/*
 @media(min-width: 768px){
   section{
     padding: 150px 0;
   }
 }
+*/
 
 .btn{
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -98,76 +157,9 @@ img::-moz-selection{
   background: transparent;
 }
 
-#mainNav{
-  background-color: #212529;
-}
 
-#mainNav .navbar-toggler{
-  font-size: 12px;
-  right: 0;
-  padding: 13px;
-  text-transform: uppercase;
-  color: white;
-  border: 0;
-  background-color: #fed136;
-  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
 
-#mainNav .navbar-brand{
-  color: #fed136;
-  font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
-}
 
-#mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-  color: #fec503;
-}
-
-#mainNav .navbar-nav .nav-item .nav-link{
-  font-size: 90%;
-  font-weight: 400;
-  padding: 0.75em 0;
-  letter-spacing: 1px;
-  color: white;
-  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-#mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover{
-  color: #fed136;
-}
-
-@media(min-width: 992px){
-  #mainNav{
-    padding-top: 25px;
-    padding-bottom: 25px;
-    -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
-    -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
-    transition: padding-top 0.3s, padding-bottom 0.3s;
-    border: none;
-    background-color: rgba(200, 0, 0, 0.75);
-  }
-
-  #mainNav .navbar-brand{
-    font-size: 1.75em;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-
-  #mainNav .navbar-nav .nav-item .nav-link{
-    padding: 1.1em 1em !important;
-  }
-
-  #mainNav.navbar-shrink{
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: #212529;
-  }
-
-  #mainNav.navbar-shrink .navbar-brand{
-    font-size: 1.25em;
-    padding: 12px 0;
-  }
-}
 
 header.masthead{
   text-align: center;

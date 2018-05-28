@@ -21,30 +21,26 @@
   </head>
 
   <body>
-  	<!-- Navigation -->
-  	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <!-- Barra de Navegacion -->
+  	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="barraNavegacion">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="../"><%= image_tag("LogoIngenioFuncional.png", :width => "250", :alt => "Logo de Ingenio Funcional") %></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">MENÚ
-          <i class="fa fa-bars"></i>
-        </button>
-      	<div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
-              <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/catalogo/index.html">NUESTROS PRODUCTOS</a>
+        <a class="logotipo" href="../"><%= image_tag("LogoIngenioFuncional.png", :width => "200", :alt => "Logo de Ingenio Funcional") %></a>
+        <div class="">
+          <ul class="navbar-nav">
+            <li class="lista">
+              <a class="nav-link" href="/catalogo/index.html">NUESTROS PRODUCTOS</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">MIS COTIZACIONES Y PEDIDOS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">CONTACTO</a>
+            <li class="lista">
+              <a class="nav-link" href="/catalogo/index.html">CONTACTO</a>
             </li>
           </ul>
     		</div>
       </div>
     </nav>
-  	<%= yield %>
-        <!-- Footer -->
+  	
+    <%= yield %>
+        
+    <!-- Pie de Pagina -->
     <footer>
       <div class="container">
         <div class="row">
