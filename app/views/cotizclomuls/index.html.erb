@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Cotizclomuls</h1>
+<header class="masthead mastheadC">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading text-uppercase">Cotizaciones de Closet Multifuncional</div>
+      <div class="intro-lead-in">Puedes consultar tus cotizaciones de este tipo de mueble, indicando tu dirección de correo electrónico con la cual realizaste tus cotizaciones:</div>
+      <br>
+      <br>
+      <br>
+      <p id="notice"><%= notice %></p>
 
 <%= form_for "", url: cotizclomuls_path, role: "Search", method: :get do %>
   <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
@@ -40,10 +46,10 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<!-- <%= link_to 'New Cotizclomul', new_cotizclomul_path %> -->
-<%= link_to 'Inicio', inicio_index_path %>
-<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
-<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>
+      <br>
+      <br>
+      <br>
+      <div class="intro-lead-in">Muchas gracias por tu cotización.</div>
+    </div>
+  </div>
+</header>

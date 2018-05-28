@@ -1,5 +1,16 @@
-<h1>New Cotizmescam</h1>
-
-<%= render 'form', cotizmescam: @cotizmescam %>
-
-<%= link_to 'Back', cotizmescams_path %>
+<header class="masthead mastheadA">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading text-uppercase">Cotización de Mesa Cama</div>
+      <div class="intro-lead-in">Para que puedas hacer una cotización de este tipo de mueble, te pedimos que diligencies el siguiente formulario, tomando en cuenta que todos los campos son obligatorios:</div>
+      <br>
+      <br>
+      <br>
+      <%= render 'form', cotizmescam: @cotizmescam %>
+      <br>
+      <br>
+      <br>
+      <div class="intro-lead-in">Muchas gracias por tu cotización.</div>
+    </div>
+  </div>
+</header>

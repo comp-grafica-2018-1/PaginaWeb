@@ -11,41 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :altura %>
-    <%= form.select(:altura, options_for_select([['1', '1'], ['1.5', '1.5'], ['1.75', '1.75']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :anchura %>
-    <%= form.select(:anchura, options_for_select([['1', '1'], ['1.5', '1.5'], ['1.75', '1.75']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :material %>
-    <%= form.select(:material, options_for_select([['Material económico', 'Material económico'], ['Material caro', 'Material caro']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.select(:color, options_for_select([['Madera clara', 'Madera clara'], ['Madera oscura', 'Madera oscura']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :correo %>
-    <%= form.text_field :correo, id: :cotizclomul_correo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre, id: :cotizclomul_nombre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cantidad %>
-    <%= form.select(:cantidad, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), {include_blank: true}) %>
-  </div>
-
+  <table class="tableA">
+    <tr>
+      <th class="tdA"><%= form.label :altura %></th>
+      <th><%= form.select(:altura, options_for_select([['1', '1'], ['1.5', '1.5'], ['1.75', '1.75']]), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="tdA"><%= form.label :anchura %></th>
+      <th><%= form.select(:anchura, options_for_select([['1', '1'], ['1.5', '1.5'], ['1.75', '1.75']]), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="tdA"><%= form.label :material %></th>
+      <th><%= form.select(:material, options_for_select([['Material económico', 'Material económico'], ['Material caro', 'Material caro']]), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="tdA"><%= form.label :color %></th>
+      <th><%= form.select(:color, options_for_select([['Madera clara', 'Madera clara'], ['Madera oscura', 'Madera oscura']]), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="tdA"><%= form.label :correo %></th>
+      <th><%= form.text_field :correo, id: :cotizclomul_correo %></th>
+    </tr>
+    <tr>
+      <th class="tdA"><%= form.label :nombre %></th>
+      <th><%= form.text_field :nombre, id: :cotizclomul_nombre %></th>
+    </tr>
+    <tr>
+      <th class="tdA"><%= form.label :cantidad %></th>
+      <th><%= form.select(:cantidad, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), {include_blank: true}) %></th>
+    </tr>
+  </table>
+    
   <div class="actions">
     <%= form.submit %>
   </div>
