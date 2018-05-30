@@ -4,6 +4,21 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
 */
 
+#error_explanation{
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors{
+  @extend .control-group;
+  @extend .error;
+  background-color: transparent;
+  width: 100%;
+ }
+
 body{
   overflow-x: hidden;
   font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -186,33 +201,28 @@ header.masthead .nav-link:hover{
 }
 
 .field{
-  margin: auto;
+  margin-left: auto;
 }
 
 select{
   width: 100%;
-  background: rgb(255, 255, 255);
   color: black;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-
+  text-align: center;
 }
-
-
-optgroup { font-size:24px; }
-
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {  /*safari and chrome*/
     select {
         font-family: 'Montserrat';
         font-size: 20px;
         height: 40px;
-        line-height:30px;
-        background:#f4f4f4;
+        line-height: 30px;
+        background: rgb(240, 240, 240);
     } 
 }
 select::-moz-focus-inner { /*Remove button padding in FF*/ 
     border: 0;
-    padding: 0;
+    padding: 0px;
 }
 @-moz-document url-prefix() { /* targets Firefox only */
     select {
@@ -239,17 +249,20 @@ label{
 }
 
 input[type=text], textarea{
-  margin: auto;
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
 }
 
 input[type=submit], textarea{
   margin: auto;
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
+  padding: 10px 20px 10px 20px;
 }
 
 @media(min-width: 768px){
