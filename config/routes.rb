@@ -1,28 +1,20 @@
 Rails.application.routes.draw do
   get 'catalogo/index'
-
   get 'catalogo/muebleclomul'
-
   get 'catalogo/muebleesccam'
-
   get 'catalogo/mueblemescam'
-
   get 'catalogo/mueblemesexp'
 
   resources :ordenmesexps
   resources :ordenmescams
   resources :ordenesccams
   resources :ordenclomuls
+
   get 'transacciones/cotizaciones'
-
   get 'transacciones/consultas'
-
   get 'transacciones/index'
-
   get 'transacciones/miscotizaciones'
-
   get 'transacciones/mispedidos'
-
   get 'inicio/index'
 
   resources :cotizmesexps

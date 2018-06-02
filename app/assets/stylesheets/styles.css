@@ -4,21 +4,6 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/LICENSE)
 */
 
-#error_explanation{
-  color: #f00;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
-}
-
-.field_with_errors{
-  @extend .control-group;
-  @extend .error;
-  background-color: transparent;
-  width: 100%;
- }
-
 body{
   overflow-x: hidden;
   font-family: 'Roboto Slab', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -77,55 +62,8 @@ footer th{
   font-size: 12px;
 }
 
-/* Adaptacion al cambio de tamaño para pantallas de tamano mediano */
-@media (max-width: 780px) and (min-width: 480px){
-  #barraNavegacion .nav-link{
-    font-size: 12px;
-    letter-spacing: 1px;
-    padding: 10px;
-  }
 
-  footer th{
-    font-size: 9px;
-  }
-}
-
-/* Adaptacion al cambio de tamaño para pantallas de tamano pequeno */
-@media (max-width: 480px){
-  #barraNavegacion .logotipo{
-    margin: auto;
-  }
-
-  #barraNavegacion .nav-link{
-    font-size: 9px;
-    letter-spacing: 1px;
-    padding: 7px;
-  }
-
-  #barraNavegacion .lista{
-    margin: auto;
-  }
-
-  footer th{
-    font-size: 7px;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-header.masthead{
+header.espacioPagina{
   text-align: center;
   color: white;
   background-repeat: no-repeat;
@@ -137,51 +75,51 @@ header.masthead{
   background-size: cover;
 }
 
-header.mastheadA{
-  background-image: url("197B.jpg");
+header.imagenFondo1{
+  background-image: url("fondoA (Con Máscara).jpg");
 }
 
-header.mastheadB{
-  background-image: url("387B.jpg");
+header.imagenFondo2{
+  background-image: url("fondoB (Con Máscara).jpg");
 }
 
-header.mastheadC{
-  background-image: url("399B.jpg");
+header.imagenFondo3{
+  background-image: url("fondoC (Con Máscara).jpg");
 }
 
-header.mastheadD{
-  background-image: url("446B.jpg");
+header.imagenFondo4{
+  background-image: url("fondoD (Con Máscara).jpg");
 }
 
-header.masthead .intro-text{
+header.espacioPagina .intro-text{
   padding-top: 150px;
   padding-bottom: 100px;
 }
 
-header.masthead .intro-text .intro-lead-in{
+header.espacioPagina .intro-text .intro-lead-in{
   font-size: 18px;
   font-style: italic;
   line-height: 18px;
   margin-bottom: 20px;
-  font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Droid Serif';
 }
 
-header.masthead .intro-text .intro-heading{
+header.espacioPagina .intro-text .intro-heading{
   font-size: 50px;
   font-weight: 700;
   line-height: 50px;
   margin-bottom: 25px;
-  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat';
 }
 
-header.masthead .tableA{
+header.espacioPagina .table{
   border-collapse: collapse;
   text-align: center;
   width: 100%;
   margin: auto;
 }
 
-header.masthead .tdA{
+header.espacioPagina .th{
   font-family: 'Montserrat';
   color: white;
   height: 100%;
@@ -189,15 +127,50 @@ header.masthead .tdA{
   font-size: 20px;
 }
 
-header.masthead .nav-link{
+header.espacioPagina .th2{
+  font-family: 'Montserrat';
+  color: white;
+  height: 100%;
+  line-height: 25px;
+  padding: 5px 20px 5px 20px;
+  font-size: 20px;
+}
+
+header.espacioPagina .nav-link{
   color: rgb(128, 0, 0);
   background-color: #fed136;
   font-size: 15px;
 }
 
-header.masthead .nav-link:hover{
+header.espacioPagina .nav-link:hover{
   color: #fed136;
   background-color: rgb(128, 0, 0);
+}
+
+
+label{
+  font-family: 'Montserrat';
+  font-size: 30px;
+  margin: auto;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+input[type=text], textarea{
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
+}
+
+input[type=submit], textarea{
+  margin: auto;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
+  padding: 10px 20px 10px 20px;
 }
 
 .field{
@@ -210,6 +183,58 @@ select{
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
   text-align: center;
 }
+
+.button-link{
+  font-size: 18px;
+  font-family: 'Montserrat';
+}
+
+.insercionExitosa{
+  width: 100%;
+  font-size: 17px;
+  font-family: 'Montserrat';
+  padding: 10px;
+}
+
+#error_explanation{
+  width: 100%;
+  font-size: 17px;
+  font-family: 'Montserrat';
+  color: rgb(180, 0, 0);
+  padding: 10px;
+  ul{
+    list-style: none;
+    margin: auto;
+  }
+}
+
+.field_with_errors{
+  @extend .control-group;
+  @extend .error;
+  background-color: transparent;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {  /*safari and chrome*/
     select {
@@ -240,38 +265,15 @@ select::-moz-focus-inner { /*Remove button padding in FF*/
 
 
 
-label{
-  font-family: 'Montserrat';
-  font-size: 30px;
-  margin: auto;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
 
-input[type=text], textarea{
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  width: 100%;
-  margin: auto;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
-}
-
-input[type=submit], textarea{
-  margin: auto;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 1);
-  padding: 10px 20px 10px 20px;
-}
 
 @media(min-width: 768px){
-  header.masthead .intro-text{
+  header.espacioPagina .intro-text{
     padding-top: 300px;
     padding-bottom: 200px;
   }
   
-  header.masthead .intro-text .intro-lead-in{
+  header.espacioPagina .intro-text .intro-lead-in{
     font-size: 28px;
     font-style: italic;
     line-height: 28px;
@@ -279,7 +281,7 @@ input[type=submit], textarea{
     font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
   
-  header.masthead .intro-text .intro-heading{
+  header.espacioPagina .intro-text .intro-heading{
     font-size: 75px;
     font-weight: 700;
     line-height: 75px;
@@ -856,4 +858,116 @@ ul.social-buttons li a{
 
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover{
   background-color: #fed136;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Adaptacion al cambio de tamaño para pantallas de tamano mediano */
+@media (max-width: 780px) and (min-width: 480px){
+  #barraNavegacion .nav-link{
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 10px;
+  }
+
+  footer th{
+    font-size: 9px;
+  }
+
+  header.espacioPagina .th{
+    padding: 5px 45px 5px 45px;
+    font-size: 14px;
+  }
+
+  header.espacioPagina .th2{
+    padding: 5px 15px 5px 15px;
+    font-size: 14px;
+  }
+
+  header.espacioPagina .nav-link{
+    font-size: 12px;
+  }
+
+  label{
+    font-size: 20px;
+  }
+
+  .button-link{
+    font-size: 17px;
+  }
+
+  .insercionExitosa{
+    font-size: 14px;
+  }
+
+  #error_explanation{
+    font-size: 14px;
+  }
+}
+
+/* Adaptacion al cambio de tamaño para pantallas de tamano pequeno */
+@media (max-width: 480px){
+  #barraNavegacion .logotipo{
+    margin: auto;
+  }
+
+  #barraNavegacion .nav-link{
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 7px;
+  }
+
+  #barraNavegacion .lista{
+    margin: auto;
+  }
+
+  footer th{
+    font-size: 7px;
+  }
+
+  header.espacioPagina .th{
+    padding: 5px 25px 5px 25px;
+    font-size: 10px;
+  }
+
+  header.espacioPagina .th2{
+    padding: 5px 10px 5px 10px;
+    font-size: 10px;
+  }
+
+  header.espacioPagina .nav-link{
+    font-size: 9px;
+  }
+
+  label{
+    font-size: 12px;
+  }
+
+  .button-link{
+    font-size: 14px;
+  }
+
+  .insercionExitosa{
+    font-size: 11px;
+  }
+
+  #error_explanation{
+    font-size: 11px;
+  }
 }

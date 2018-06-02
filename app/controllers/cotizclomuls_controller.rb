@@ -6,9 +6,21 @@ class CotizclomulsController < ApplicationController
   def index
     #@cotizclomuls = Cotizclomul.all
     @cotizclomuls = Cotizclomul.where("correo = ''")
-    if params[:correo]
+    if params[:correo] && params[:orden] && params[:filtrar]
       @correoelectronico = params[:correo]
       @cotizclomuls = Cotizclomul.where("correo = ?", @correoelectronico)
+      case params[:filtrar]
+        when 'confirmadas'
+          @cotizclomuls = @cotizclomuls.where("confirmacion = ?", 'COMPRA CONFIRMADA')
+        when 'pendientes'
+          @cotizclomuls = @cotizclomuls.where("confirmacion = ?", 'Por confirmar')
+      end
+      case params[:orden]
+        when 'Ascendente'
+          @cotizclomuls = @cotizclomuls.order(:created_at)
+        when 'Descendente'
+          @cotizclomuls = @cotizclomuls.order(:created_at).reverse
+      end
     end
   end
 
@@ -73,8 +85,9 @@ class CotizclomulsController < ApplicationController
     respond_to do |format|
       if @cotizclomul.save
         RemisorCotizacionesMailer.confirmacioncotizclomul(@cotizclomul).deliver_now
-        format.html { redirect_to @cotizclomul, notice: 'Cotizclomul was successfully created.' }
-        format.json { render :show, status: :created, location: @cotizclomul }
+        #format.html { redirect_to @cotizclomul, notice: 'Cotizclomul was successfully created.' }
+        format.html { redirect_to catalogo_index_url, notice: 'La cotización fue creada con éxito. En un momento te enviamos una respuesta por correo electrónico' }
+        #format.json { render :show, status: :created, location: @cotizclomul }
       else
         format.html { render :new }
         format.json { render json: @cotizclomul.errors, status: :unprocessable_entity }
