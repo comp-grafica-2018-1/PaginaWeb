@@ -1,69 +1,98 @@
-<header class="masthead mastheadC">
+<header class="espacioPagina imagenFondo2">
   <div class="container">
     <div class="intro-text">
-      <div class="intro-heading text-uppercase">Cotizaciones de Closet Multifuncional</div>
-      <div class="intro-lead-in">Para que puedas hacer una cotización de este tipo de mueble, te pedimos que diligencies el siguiente formulario, tomando en cuenta que todos los campos son obligatorios:</div>
+      <% if notice %>
+        <p id="notice" class="alert-success insercionExitosa"><%= notice %></p>
+        <br>
+        <br>
+        <br>
+      <% end %>
+      <div class="intro-heading text-uppercase">Detalles de Cotización</div>
       <br>
       <br>
       <br>
-
-<p>
-  <strong>Altura (en metros):</strong>
-  <%= @cotizclomul.altura %>
-</p>
-
-<p>
-  <strong>Anchura (en metros):</strong>
-  <%= @cotizclomul.anchura %>
-</p>
-
-<p>
-  <strong>Material:</strong>
-  <%= @cotizclomul.material %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @cotizclomul.color %>
-</p>
-
-<p>
-  <strong>Correo:</strong>
-  <%= @cotizclomul.correo %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @cotizclomul.nombre %>
-</p>
-
-<p>
-  <strong>Cantidad:</strong>
-  <%= @cotizclomul.cantidad %>
-</p>
-
-<% case @cotizclomul.confirmacion %>
-  <% when 'Por confirmar' %>
-    <%= form_for "", url: @cotizclomul, role: "Search", method: :get do %>
-      <%= hidden_field_tag :identificador, @cotizclomul.id %>
-      <%= submit_tag "Enviar Clave de Confirmación de orden de compra" %>
-    <% end %>
-
-    <%= form_for "", url: @cotizclomul, role: "Search", method: :get do %>
-      <%= hidden_field_tag :identificador, @cotizclomul.id %>
-      <%= password_field_tag :clavecompra, nil %>
-      <%= submit_tag "Confirmar orden de compra" %>
-    <% end %>
-  <% else %>
-  <p>
-    <strong>Confirmación de Orden de Compra: SÍ</strong>
-  </p>
-<% end %>
-
-<br>
+      <% case @cotizclomul.confirmacion %>
+        <% when 'Por confirmar' %>
+          <%= form_for "", url: @cotizclomul, role: "Search", method: :get do %>
+            <h2 class="th"><%= hidden_field_tag :identificador, @cotizclomul.id %><%= submit_tag "Enviar Clave para Confirmación" %></h2>
+          <% end %>
+          <%= form_for "", url: @cotizclomul, role: "Search", method: :get do %>
+            <table>
+              <tr>
+                <th><%= label_tag :clavecompra, 'Clave de Confirmación de Compra:' %></th>
+                <th class="th"><%= hidden_field_tag :identificador, @cotizclomul.id %><%= password_field_tag :clavecompra, nil %></th>
+              </tr>
+            </table>
+            <h2 class="th"><%= submit_tag "Confirmar Orden de Compra" %></h2>
+            <br>
+            <br>
+            <br>
+          <% end %>
+      <% end %>
+      <table>
+        <tr>
+          <th class="th">Número de Cotización:</th>
+          <th class="th"><%= @cotizclomul.id %></th>
+        </tr>
+        <tr>
+          <th class="th">Mueble Solicitado:</th>
+          <th class="th">CLOSET MULTIFUNCIONAL</th>
+        </tr>
+        <tr>
+          <th class="th">Fecha de Cotización:</th>
+          <th class="th"><%= (@cotizclomul.created_at - 5.hours).strftime("%d/%m/%Y - %I:%M:%S %p") %></th>
+        </tr>
+        <tr>
+          <th class="th">Fecha de Confirmación de Compra:</th>
+          <th class="th">
+            <% if @cotizclomul.created_at != @cotizclomul.updated_at %>
+              <%= (@cotizclomul.updated_at - 5.hours).strftime("%d/%m/%Y - %I:%M:%S %p") %></th>
+            <% else %>
+              No se ha confirmado la orden de compra para esta cotización
+            <% end %>
+        </tr>
+        <tr>
+          <th class="th">Confirmación de Orden de Compra:</th>
+          <th class="th"><%= @cotizclomul.confirmacion %></th>
+        </tr>
+        <tr>
+          <th class="th">Altura (en metros):</th>
+          <th class="th"><%= @cotizclomul.altura %></th>
+        </tr>
+        <tr>
+          <th class="th">Anchura (en metros):</th>
+          <th class="th"><%= @cotizclomul.anchura %></th>
+        </tr>
+        <tr>
+          <th class="th">Material de Fabricación:</th>
+          <th class="th"><%= @cotizclomul.material %></th>
+        </tr>
+        <tr>
+          <th class="th">Estilo de Color:</th>
+          <th class="th"><%= @cotizclomul.color %></th>
+        </tr>
+        <tr>
+          <th class="th">Correo Electrónico:</th>
+          <th class="th"><%= @cotizclomul.correo %></th>
+        </tr>
+        <tr>
+          <th class="th">Nombre de Contacto:</th>
+          <th class="th"><%= @cotizclomul.nombre %></th>
+        </tr>
+        <tr>
+          <th class="th">Cantidad Solicitada:</th>
+          <th class="th"><%= @cotizclomul.cantidad %></th>
+        </tr>
+      </table>
       <br>
       <br>
-      <div class="intro-lead-in">Muchas gracias por tu cotización.</div>
+      <br>
+      <table>
+      <tr>
+        <th class="th"><a class="nav-link th" href="/cotizclomuls/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+        <th class="th"><a class="nav-link th" href="/catalogo/index">REGRESAR AL CATÁLOGO</a></th>
+      </tr>
+    </table>
     </div>
   </div>
 </header>

@@ -31,7 +31,7 @@ class CotizesccamsController < ApplicationController
       @identificador = params[:identificador]
       @cotizesccam = Cotizesccam.find(@identificador)
       if params[:clavecompra].to_s == @cotizesccam.clavecompra.to_s
-        @ordenesccam = Ordenclomul.new
+        @ordenesccam = Ordenesccam.new
         @ordenesccam.fechasolicitud = Time.now
         @ordenesccam.fechaentrega = Time.now + 15.days
         @ordenesccam.idcotizacion = @cotizesccam.id
@@ -48,13 +48,13 @@ class CotizesccamsController < ApplicationController
         redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
         RemisorOrdenesCompraMailer.confirmacionordenesccam(@ordenesccam).deliver_now
       else
-        redirect_to @cotizesccam, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+        redirect_to @cotizesccam, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta orden de compra. Intenta nuevamente.'
       end
     elsif params[:identificador]
       @identificador = params[:identificador]
       @cotizesccam = Cotizesccam.find(@identificador)
       RemisorClavesMailer.envioclavecotizesccam(@cotizesccam).deliver_now
-      redirect_to @cotizesccam
+      redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la clave de confirmación de orden de compra.'
     end
   end
 

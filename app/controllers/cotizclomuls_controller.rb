@@ -49,13 +49,13 @@ class CotizclomulsController < ApplicationController
         redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
         RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
       else
-        redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+        redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta orden de compra. Intenta nuevamente.'
       end
     elsif params[:identificador]
       @identificador = params[:identificador]
       @cotizclomul = Cotizclomul.find(@identificador)
       RemisorClavesMailer.envioclavecotizclomul(@cotizclomul).deliver_now
-      redirect_to @cotizclomul
+      redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la clave de confirmación de orden de compra.'
     end
   end
 

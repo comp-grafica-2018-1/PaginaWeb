@@ -14,11 +14,11 @@
     </tr>
     <tr>
       <th class="th"><%= form.label :material, 'Material de Fabricación:' %></th>
-      <th class="th"><%= form.select(:material, options_for_select([['Material económico', 'Material económico'], ['Material caro', 'Material caro']], form.object.material), {include_blank: true}) %></th>
+      <th class="th"><%= form.select(:material, options_for_select([['Roble', 'Roble'], ['Aglomerado', 'Aglomerado']], form.object.material), {include_blank: true}) %></th>
     </tr>
     <tr>
       <th class="th"><%= form.label :color, 'Estilo de Color:' %></th>
-      <th class="th"><%= form.select(:color, options_for_select([['Madera clara', 'Madera clara'], ['Madera oscura', 'Madera oscura']], form.object.color), {include_blank: true}) %></th>
+      <th class="th"><%= form.select(:color, options_for_select([['Natural', 'Natural'], ['Blanco', 'Blanco'], ['Negro', 'Negro']], form.object.color), {include_blank: true}) %></th>
     </tr>
     <tr>
       <th class="th"><%= form.label :correo, 'Correo Electrónico:' %></th>
