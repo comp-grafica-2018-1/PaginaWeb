@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 20180514062635) do
     t.string "cantidad"
     t.string "altura"
     t.string "anchura"
-    t.string "clavecompra"
   end
 
   create_table "ordenesccams", force: :cascade do |t|
@@ -100,7 +99,6 @@ ActiveRecord::Schema.define(version: 20180514062635) do
     t.date "fechacotizacion"
     t.string "cantidad"
     t.string "colchon"
-    t.string "clavecompra"
   end
 
   create_table "ordenmescams", force: :cascade do |t|
@@ -118,7 +116,6 @@ ActiveRecord::Schema.define(version: 20180514062635) do
     t.string "colchon"
     t.string "cajonsuperior"
     t.string "repisa"
-    t.string "clavecompra"
   end
 
   create_table "ordenmesexps", force: :cascade do |t|
@@ -134,7 +131,6 @@ ActiveRecord::Schema.define(version: 20180514062635) do
     t.date "fechacotizacion"
     t.string "cantidad"
     t.string "numeropuestos"
-    t.string "clavecompra"
   end
 
 end
