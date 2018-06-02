@@ -79,6 +79,7 @@ class CotizesccamsController < ApplicationController
         format.json { render json: @cotizesccam.errors, status: :unprocessable_entity }
       end
     end
+    HTTParty.post('http://localhost:3002/api/prices', {body: @cotizesccam.to_json})
   end
 
   # PATCH/PUT /cotizesccams/1
@@ -106,13 +107,14 @@ class CotizesccamsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cotizesccam
-      @cotizesccam = Cotizesccam.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cotizesccam_params
-      params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cotizesccam
+    @cotizesccam = Cotizesccam.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cotizesccam_params
+    params.require(:cotizesccam).permit(:colchon, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
+  end
 end
