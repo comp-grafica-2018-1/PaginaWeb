@@ -73,6 +73,7 @@ class CotizmesexpsController < ApplicationController
     respond_to do |format|
       if @cotizmesexp.save
         RemisorCotizacionesMailer.confirmacioncotizmesexp(@cotizmesexp).deliver_now
+        p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizmesexp.to_json, headers:{'Content-Type': 'application/json'}})
         format.html { redirect_to @cotizmesexp, notice: 'Cotizmesexp was successfully created.' }
         format.json { render :show, status: :created, location: @cotizmesexp }
       else
@@ -80,7 +81,6 @@ class CotizmesexpsController < ApplicationController
         format.json { render json: @cotizmesexp.errors, status: :unprocessable_entity }
       end
     end
-    p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizmesexp.to_json, headers:{'Content-Type': 'application/json'}})
   end
 
   # PATCH/PUT /cotizmesexps/1

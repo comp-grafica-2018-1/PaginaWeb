@@ -75,6 +75,7 @@ class CotizmescamsController < ApplicationController
     respond_to do |format|
       if @cotizmescam.save
         RemisorCotizacionesMailer.confirmacioncotizmescam(@cotizmescam).deliver_now
+        p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizmescam.to_json, headers:{'Content-Type': 'application/json'}})
         format.html { redirect_to @cotizmescam, notice: 'Cotizmescam was successfully created.' }
         format.json { render :show, status: :created, location: @cotizmescam }
       else
@@ -82,7 +83,6 @@ class CotizmescamsController < ApplicationController
         format.json { render json: @cotizmescam.errors, status: :unprocessable_entity }
       end
     end
-    p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizmescam.to_json, headers:{'Content-Type': 'application/json'}})
   end
 
   # PATCH/PUT /cotizmescams/1
