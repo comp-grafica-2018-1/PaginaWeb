@@ -32,6 +32,7 @@ class CotizclomulsController < ApplicationController
         @ordenclomul.fechacotizacion = @cotizclomul.created_at
         @ordenclomul.cantidad = @cotizclomul.cantidad
         @ordenclomul.save
+        p HTTParty.post('http://localhost:3002/api/bills', {body:@ordenclomul.to_json, headers:{'Content-Type': 'application/json'}})
         @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
         @cotizclomul.save
         redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
@@ -80,6 +81,7 @@ class CotizclomulsController < ApplicationController
         format.json { render json: @cotizclomul.errors, status: :unprocessable_entity }
       end
     end
+    p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizclomul.to_json, headers:{'Content-Type': 'application/json'}})
   end
 
   # PATCH/PUT /cotizclomuls/1
