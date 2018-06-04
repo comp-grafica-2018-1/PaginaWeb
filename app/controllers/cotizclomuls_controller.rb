@@ -109,13 +109,14 @@ class CotizclomulsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cotizclomul
-      @cotizclomul = Cotizclomul.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cotizclomul_params
-      params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cotizclomul
+    @cotizclomul = Cotizclomul.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cotizclomul_params
+    params.require(:cotizclomul).permit(:altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion, :clavecompra)
+  end
 end

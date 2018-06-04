@@ -67,13 +67,14 @@ class OrdenclomulsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ordenclomul
-      @ordenclomul = Ordenclomul.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def ordenclomul_params
-      params.require(:ordenclomul).permit(:fechaentrega, :idcotizacion, :altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ordenclomul
+    @ordenclomul = Ordenclomul.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def ordenclomul_params
+    params.require(:ordenclomul).permit(:fechaentrega, :idcotizacion, :altura, :anchura, :material, :color, :correo, :nombre, :cantidad, :confirmacion)
+  end
 end
