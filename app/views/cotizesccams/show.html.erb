@@ -1,52 +1,94 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Colchón:</strong>
-  <%= @cotizesccam.colchon %>
-</p>
-
-<p>
-  <strong>Material:</strong>
-  <%= @cotizesccam.material %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @cotizesccam.color %>
-</p>
-
-<p>
-  <strong>Correo:</strong>
-  <%= @cotizesccam.correo %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
-  <%= @cotizesccam.nombre %>
-</p>
-
-<p>
-  <strong>Cantidad:</strong>
-  <%= @cotizesccam.cantidad %>
-</p>
-
-<% case @cotizesccam.confirmacion %>
-  <% when 'Por confirmar' %>
-    <%= form_for "", url: @cotizesccam, role: "Search", method: :get do %>
-      <%= hidden_field_tag :identificador, @cotizesccam.id %>
-      <%= submit_tag "Enviar Clave de Confirmación de orden de compra" %>
-    <% end %>
-
-    <%= form_for "", url: @cotizesccam, role: "Search", method: :get do %>
-      <%= hidden_field_tag :identificador, @cotizesccam.id %>
-      <%= password_field_tag :clavecompra, nil %>
-      <%= submit_tag "Confirmar orden de compra" %>
-    <% end %>
-  <% else %>
-  <p>
-    <strong>Confirmación de Orden de Compra: SÍ</strong>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_cotizesccam_path(@cotizesccam) %> |
-<%= link_to 'Back', cotizesccams_path %>
+<header class="espacioPagina imagenFondo3">
+  <div class="container">
+    <div class="intro-text">
+      <% if notice %>
+        <p id="notice" class="alert-success insercionExitosa"><%= notice %></p>
+        <br>
+        <br>
+        <br>
+      <% end %>
+      <div class="intro-heading text-uppercase">Detalles de Cotización</div>
+      <br>
+      <br>
+      <br>
+      <% case @cotizesccam.confirmacion %>
+        <% when 'Por confirmar' %>
+          <%= form_for "", url: @cotizesccam, role: "Search", method: :get do %>
+            <h2 class="th"><%= hidden_field_tag :identificador, @cotizesccam.id %><%= submit_tag "Enviar Clave para Confirmación" %></h2>
+          <% end %>
+          <%= form_for "", url: @cotizesccam, role: "Search", method: :get do %>
+            <table>
+              <tr>
+                <th><%= label_tag :clavecompra, 'Clave de Confirmación de Compra:' %></th>
+                <th class="th"><%= hidden_field_tag :identificador, @cotizesccam.id %><%= password_field_tag :clavecompra, nil %></th>
+              </tr>
+            </table>
+            <h2 class="th"><%= submit_tag "Confirmar Orden de Compra" %></h2>
+            <br>
+            <br>
+            <br>
+          <% end %>
+      <% end %>
+      <table>
+        <tr>
+          <th class="th">Número de Cotización:</th>
+          <th class="th"><%= @cotizesccam.id %></th>
+        </tr>
+        <tr>
+          <th class="th">Mueble Solicitado:</th>
+          <th class="th">ESCRITORIO CAMA</th>
+        </tr>
+        <tr>
+          <th class="th">Fecha de Cotización:</th>
+          <th class="th"><%= (@cotizesccam.created_at - 5.hours).strftime("%d/%m/%Y - %I:%M:%S %p") %></th>
+        </tr>
+        <tr>
+          <th class="th">Fecha de Confirmación de Compra:</th>
+          <th class="th">
+            <% if @cotizesccam.created_at != @cotizesccam.updated_at %>
+              <%= (@cotizesccam.updated_at - 5.hours).strftime("%d/%m/%Y - %I:%M:%S %p") %></th>
+            <% else %>
+              No se ha confirmado la orden de compra para esta cotización
+            <% end %>
+        </tr>
+        <tr>
+          <th class="th">Confirmación de Orden de Compra:</th>
+          <th class="th"><%= @cotizesccam.confirmacion %></th>
+        </tr>
+        <tr>
+          <th class="th">Tamaño de Colchón:</th>
+          <th class="th"><%= @cotizesccam.colchon %></th>
+        </tr>
+        <tr>
+          <th class="th">Material de Fabricación:</th>
+          <th class="th"><%= @cotizesccam.material %></th>
+        </tr>
+        <tr>
+          <th class="th">Estilo de Color:</th>
+          <th class="th"><%= @cotizesccam.color %></th>
+        </tr>
+        <tr>
+          <th class="th">Correo Electrónico:</th>
+          <th class="th"><%= @cotizesccam.correo %></th>
+        </tr>
+        <tr>
+          <th class="th">Nombre de Contacto:</th>
+          <th class="th"><%= @cotizesccam.nombre %></th>
+        </tr>
+        <tr>
+          <th class="th">Cantidad Solicitada:</th>
+          <th class="th"><%= @cotizesccam.cantidad %></th>
+        </tr>
+      </table>
+      <br>
+      <br>
+      <br>
+      <table>
+        <tr>
+          <th class="th"><a class="nav-link th" href="/cotizesccams/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+          <th class="th"><a class="nav-link th" href="/catalogo/index">REGRESAR AL CATÁLOGO</a></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</header>

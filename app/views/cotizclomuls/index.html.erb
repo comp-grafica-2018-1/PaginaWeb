@@ -1,4 +1,4 @@
-<header class="masthead mastheadC">
+<header class="espacioPagina imagenFondo3">
   <div class="container">
     <div class="intro-text">
       <div class="intro-heading text-uppercase">Cotizaciones de Closet Multifuncional</div>
@@ -6,50 +6,64 @@
       <br>
       <br>
       <br>
-      <p id="notice"><%= notice %></p>
-
-<%= form_for "", url: cotizclomuls_path, role: "Search", method: :get do %>
-  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
-  <%= submit_tag "Consultar Cotizaciones" %>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Altura (en metros)</th>
-      <th>Anchura (en metros)</th>
-      <th>Material</th>
-      <th>Color</th>
-      <th>Correo</th>
-      <th>Nombre</th>
-      <th>Cantidad</th>
-      <th>Confirmación de Orden de Compra</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cotizclomuls.each do |cotizclomul| %>
-      <tr>
-        <td><%= cotizclomul.altura %></td>
-        <td><%= cotizclomul.anchura %></td>
-        <td><%= cotizclomul.material %></td>
-        <td><%= cotizclomul.color %></td>
-        <td><%= cotizclomul.correo %></td>
-        <td><%= cotizclomul.nombre %></td>
-        <td><%= cotizclomul.cantidad %></td>
-        <td><%= cotizclomul.confirmacion %></td>
-        <td><%= link_to 'Show', cotizclomul %></td>
-        <td><%= link_to 'Edit', edit_cotizclomul_path(cotizclomul) %></td>
-        <td><%= link_to 'Destroy', cotizclomul, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <%= form_for "", url: cotizclomuls_path, role: "Search", method: :get do |f|%>
+        <table>
+          <tr>
+            <th class="th2">
+              <%= label_tag :orden, 'Orden de Cotizaciones:' %>
+            </th>
+            <th class="th">
+              <%= select_tag(:orden, options_for_select([['Desde cotizaciones más recientes', 'Descendente'], ['Desde cotizaciones más antiguas', 'Ascendente']])) %>
+            </th>
+          </tr>
+          <tr>
+            <th class="th2">
+              <%= label_tag :filtrar, 'Filtrar Cotizaciones por:' %>
+            </th>
+            <th class="th">
+              <%= select_tag(:filtrar, options_for_select([['Todos', 'todos'], ['Cotizaciones con Orden de Compra Confirmada', 'confirmadas'], ['Cotizaciones con Orden de Compra Pendiente', 'pendientes']])) %>
+            </th>
+          </tr>
+          <tr>
+            <th class="th2"><%= label_tag :correo, 'Correo Electrónico:' %></th>
+            <th class="th"><%= text_field_tag :correo, @correoelectronico %></th>
+          </tr>
+          <tr>
+            <th class="th" colspan="2"><br><%= submit_tag "Consultar Cotizaciones" %></th>
+          </tr>
+        </table>
+      <% end %>
       <br>
       <br>
       <br>
-      <div class="intro-lead-in">Muchas gracias por tu cotización.</div>
+      <table class="">
+        <tr>
+          <th class="th2">Número de Cotización</th>
+          <th class="th2">Fecha de Cotización</th>
+          <th class="th2">Confirmación de Orden de Compra</th>
+          <th class="th2" colspan="1">Acciones</th>
+        </tr>
+        <% @cotizclomuls.each do |cotizclomul| %>
+          <tr>
+            <td class="th2"><%= cotizclomul.id %></td>
+            <td class="th2"><%= (cotizclomul.created_at - 5.hours).strftime("%d/%m/%Y - %I:%M:%S %p") %></td>
+            <td class="th2"><%= cotizclomul.confirmacion %></td>
+            <td class="th2"><a class="nav-link" href="/cotizclomuls/<%=cotizclomul.id %>"><b>VER DETALLES</b></a></td>
+            <!--<td><%= link_to 'Ver Detalles', cotizclomul %></td>-->
+            <!--<td><%= link_to 'Edit', edit_cotizclomul_path(cotizclomul) %></td>-->
+            <!--<td><%= link_to 'Destroy', cotizclomul, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          </tr>
+        <% end %>
+      </table>
+      <br>
+      <br>
+      <br>
+      <table>
+        <tr>
+          <th class="th"><a class="nav-link th" href="/cotizclomuls/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+          <th class="th"><a class="nav-link th" href="/catalogo/index">REGRESAR AL CATÁLOGO</a></th>
+        </tr>
+      </table>
     </div>
   </div>
 </header>

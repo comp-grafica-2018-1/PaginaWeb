@@ -1,57 +1,57 @@
 <%= form_with(model: cotizmescam, local: true) do |form| %>
+  <table class="">
+    <tr>
+      <th class="th"><%= form.label :colchon, 'Tamaño de Colchón:' %></th>
+      <th class="th"><%= form.select(:colchon, options_for_select([['Sencillo', 'Sencillo'], ['Semidoble', 'Semidoble'], ['Doble', 'Doble']]), {include_blank: true}) %></tr>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :cajonsuperior, 'Cajón Superior:' %></th>
+      <th class="th"><%= form.select(:cajonsuperior, options_for_select([['Sí', 'Sí'], ['No', 'No']]), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :repisa, 'Repisa:' %></th>
+      <th class="th"><%= form.select(:repisa, options_for_select([['Sí', 'Sí'], ['No', 'No']]), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :material, 'Material de Fabricación:' %></th>
+      <th class="th"><%= form.select(:material, options_for_select([['Roble', 'Roble'], ['Aglomerado', 'Aglomerado']], form.object.material), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :color, 'Estilo de Color:' %></th>
+      <th class="th"><%= form.select(:color, options_for_select([['Natural', 'Natural'], ['Blanco', 'Blanco'], ['Negro', 'Negro']], form.object.color), {include_blank: true}) %></th>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :correo, 'Correo Electrónico:' %></th>
+      <th class="th"><%= form.text_field :correo, id: :cotizclomul_correo %></th>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :nombre, 'Nombre de Contacto:' %></th>
+      <th class="th"><%= form.text_field :nombre, id: :cotizclomul_nombre %></th>
+    </tr>
+    <tr>
+      <th class="th"><%= form.label :cantidad, 'Cantidad:' %></th>
+      <th class="th"><%= form.select(:cantidad, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']], form.object.cantidad), {include_blank: true}) %></th>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <br>
+  <div class="actions">
+    <%= form.submit 'Confirmar Cotización de Mesa Cama', :class => 'button-link' %>
+  </div>
+  <br>
+  <br>
+  <br>
   <% if cotizmescam.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(cotizmescam.errors.count, "error") %> prohibited this cotizmescam from being saved:</h2>
+      <!--<h2><%= pluralize(cotizmescam.errors.count, "error") %> prohibited this cotizmescam from being saved:</h2>
 
       <ul>
       <% cotizmescam.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
+      </ul>-->
+      Por favor diligencia completamente el formulario de cotización de este mueble. Te recordamos que todos los campos son obligatorios (La dirección de correo electrónico debe ser una dirección válida y el nombre de contacto debe tener mínimo 3 y máximo 30 caracteres).
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :colchon %>
-    <%= form.select(:colchon, options_for_select([['Sencillo', 'Sencillo'], ['Semidoble', 'Semidoble'], ['Doble', 'Doble']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :material %>
-    <%= form.select(:material, options_for_select([['Material económico', 'Material económico'], ['Material caro', 'Material caro']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :color %>
-    <%= form.select(:color, options_for_select([['Madera clara', 'Madera clara'], ['Madera oscura', 'Madera oscura']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cajonsuperior %>
-    <%= form.select(:cajonsuperior, options_for_select([['Sí', 'Sí'], ['No', 'No']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :repisa %>
-    <%= form.select(:repisa, options_for_select([['Sí', 'Sí'], ['No', 'No']]), {include_blank: true}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :correo %>
-    <%= form.text_field :correo, id: :cotizmescam_correo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre, id: :cotizmescam_nombre %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cantidad %>
-    <%= form.select(:cantidad, options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), {include_blank: true}) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
