@@ -10,16 +10,16 @@ class CotizesccamsController < ApplicationController
       @correoelectronico = params[:correo]
       @cotizesccams = Cotizesccam.where("correo = ?", @correoelectronico)
       case params[:filtrar]
-        when 'confirmadas'
-          @cotizesccams = @cotizesccams.where("confirmacion = ?", 'COMPRA CONFIRMADA')
-        when 'pendientes'
-          @cotizesccams = @cotizesccams.where("confirmacion = ?", 'Por confirmar')
+      when 'confirmadas'
+        @cotizesccams = @cotizesccams.where("confirmacion = ?", 'COMPRA CONFIRMADA')
+      when 'pendientes'
+        @cotizesccams = @cotizesccams.where("confirmacion = ?", 'Por confirmar')
       end
       case params[:orden]
-        when 'Ascendente'
-          @cotizesccams = @cotizesccams.order(:created_at)
-        when 'Descendente'
-          @cotizesccams = @cotizesccams.order(:created_at).reverse
+      when 'Ascendente'
+        @cotizesccams = @cotizesccams.order(:created_at)
+      when 'Descendente'
+        @cotizesccams = @cotizesccams.order(:created_at).reverse
       end
     end
   end
@@ -43,6 +43,7 @@ class CotizesccamsController < ApplicationController
         @ordenesccam.fechacotizacion = @cotizesccam.created_at
         @ordenesccam.cantidad = @cotizesccam.cantidad
         @ordenesccam.save
+        p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenesccam.to_json, headers: {'Content-Type': 'application/json'}})
         @cotizesccam.confirmacion = 'COMPRA CONFIRMADA'
         @cotizesccam.save
         redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
@@ -84,15 +85,14 @@ class CotizesccamsController < ApplicationController
     respond_to do |format|
       if @cotizesccam.save
         RemisorCotizacionesMailer.confirmacioncotizesccam(@cotizesccam).deliver_now
-        #format.html { redirect_to @cotizesccam, notice: 'Cotizesccam was successfully created.' }
-        format.html { redirect_to catalogo_index_url, notice: 'La cotización fue creada con éxito. En un momento te enviamos una respuesta por correo electrónico' }
-        #format.json { render :show, status: :created, location: @cotizesccam }
+        p HTTParty.post('http://localhost:3002/api/prices', {body: @cotizclomul.to_json, headers: {'Content-Type': 'application/json'}})
+        format.html { redirect_to @cotizesccam, notice: 'Cotizesccam was successfully created.' }
+        format.json { render :show, status: :created, location: @cotizesccam }
       else
         format.html { render :new }
         format.json { render json: @cotizesccam.errors, status: :unprocessable_entity }
       end
     end
-    HTTParty.post('http://localhost:3002/api/prices', {body: @cotizesccam.to_json})
   end
 
   # PATCH/PUT /cotizesccams/1
