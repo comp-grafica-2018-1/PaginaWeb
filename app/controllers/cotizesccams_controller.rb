@@ -42,12 +42,13 @@ class CotizesccamsController < ApplicationController
         @ordenesccam.nombre = @cotizesccam.nombre
         @ordenesccam.fechacotizacion = @cotizesccam.created_at
         @ordenesccam.cantidad = @cotizesccam.cantidad
-        @ordenesccam.save
-        p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenesccam.to_json, headers: {'Content-Type': 'application/json'}})
-        @cotizesccam.confirmacion = 'COMPRA CONFIRMADA'
-        @cotizesccam.save
-        redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
-        RemisorOrdenesCompraMailer.confirmacionordenesccam(@ordenesccam).deliver_now
+        if @ordenesccam.save
+          p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenesccam.to_json, headers: {'Content-Type': 'application/json'}})
+          @cotizesccam.confirmacion = 'COMPRA CONFIRMADA'
+          @cotizesccam.save
+          redirect_to @cotizesccam, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+          RemisorOrdenesCompraMailer.confirmacionordenesccam(@ordenesccam).deliver_now
+        end
       else
         redirect_to @cotizesccam, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta orden de compra. Intenta nuevamente.'
       end

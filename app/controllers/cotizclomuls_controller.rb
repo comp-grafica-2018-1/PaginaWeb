@@ -43,12 +43,13 @@ class CotizclomulsController < ApplicationController
         @ordenclomul.nombre = @cotizclomul.nombre
         @ordenclomul.fechacotizacion = @cotizclomul.created_at
         @ordenclomul.cantidad = @cotizclomul.cantidad
-        @ordenclomul.save
-        p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenclomul.to_json, headers: {'Content-Type': 'application/json'}})
-        @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
-        @cotizclomul.save
-        redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
-        RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
+        if @ordenclomul.save
+          p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenclomul.to_json, headers: {'Content-Type': 'application/json'}})
+          @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
+          @cotizclomul.save
+          redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+          RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
+        end
       else
         redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta orden de compra. Intenta nuevamente.'
       end
