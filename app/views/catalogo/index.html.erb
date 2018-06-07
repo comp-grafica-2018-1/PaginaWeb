@@ -1,6 +1,12 @@
-<header class="masthead mastheadB">
+<header class="espacioPagina imagenFondo2">
 	<div class="container">
     	<div class="intro-text">
+          <% if notice %>
+            <p id="notice" class="alert-success insercionExitosa"><%= notice %></p>
+            <br>
+            <br>
+            <br>
+          <% end %>
       		<div class="intro-heading text-uppercase">CATÁLOGO DE MUEBLES</div>
       		<br>
       		<br>
@@ -9,23 +15,20 @@
       		<br>
       		<br>
       		<br>
-      		<table class="tableA">
+      		<table class="">
       			<tr>
-            		<th class="tdA">CLOSET MULTIFUNCIONAL</th>
-            		<th class="tdA">VISTA PREVIA</th>
+            		<th class="th">CLOSET MULTIFUNCIONAL</th>
+            		<th class="th">VISTA PREVIA</th>
           		</tr>
           		<tr>
-            		<th class="tdA">Este mueble lo puedes personalizar indicando ciertas dimensiones posibles de anchura y altura, además de material de fabricación como roble o aglomerado, y color como natural, blanco o negro.</th>
+            		<th class="th">Este mueble lo puedes personalizar indicando ciertas dimensiones posibles de anchura y altura, además de material de fabricación como roble o aglomerado, y color como natural, blanco o negro.</th>
             		<th rowspan="4"><%= image_tag("closetMultifuncional.jpg", :width => "100%", :alt => "Vista previa del Closet Multifuncional") %></th>
           		</tr>
           		<tr>
-            		<th class="tdA"><a class="nav-link" href="/cotizclomuls/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+            		<th class="th"><a class="nav-link" href="/cotizclomuls/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
           		</tr>
           		<tr>
-            		<th class="tdA"><a class="nav-link" href="/cotizclomuls">CONSULTA TUS COTIZACIONES DE ESTE TIPO DE MUEBLE</a></th>
-          		</tr>
-          		<tr>
-            		<th class="tdA"><a class="nav-link" href="/ordenclomuls">CONSULTA TUS ÓRDENES DE COMPRA DE ESTE TIPO DE MUEBLE</a></th>
+            		<th class="th"><a class="nav-link" href="/cotizclomuls">CONSULTA TUS COTIZACIONES DE ESTE TIPO DE MUEBLE</a></th>
           		</tr>
       		</table>
       		<br>
@@ -33,21 +36,18 @@
       		<br>
       		<table>
       			<tr>
-            		<th class="tdA">ESCRITORIO CAMA</th>
-            		<th class="tdA">VISTA PREVIA</th>
+            		<th class="th">ESCRITORIO CAMA</th>
+            		<th class="th">VISTA PREVIA</th>
           		</tr>
           		<tr>
-            		<th class="tdA">Este mueble lo puedes personalizar indicando ciertas dimensiones posibles de anchura y altura, además de material de fabricación como roble o aglomerado, y color como natural, blanco o negro.</th>
+            		<th class="th">Este mueble lo puedes personalizar indicando el tamaño de colchón como sencillo o semidoble, además de material de fabricación como roble o aglomerado, y color como natural, blanco o negro.</th>
             		<th rowspan="4"><%= image_tag("escritorioCama.jpg", :width => "100%", :alt => "Vista previa del Escritorio Cama") %></th>
           		</tr>
           		<tr>
-            		<th class="tdA"><a class="nav-link" href="/cotizesccams/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+            		<th class="th"><a class="nav-link" href="/cotizesccams/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
           		</tr>
           		<tr>
-            		<th class="tdA"><a class="nav-link" href="/cotizesccams">CONSULTA TUS COTIZACIONES DE ESTE TIPO DE MUEBLE</a></th>
-          		</tr>
-          		<tr>
-            		<th class="tdA"><a class="nav-link" href="/ordenesccams">CONSULTA TUS ÓRDENES DE COMPRA DE ESTE TIPO DE MUEBLE</a></th>
+            		<th class="th"><a class="nav-link" href="/cotizesccams">CONSULTA TUS COTIZACIONES DE ESTE TIPO DE MUEBLE</a></th>
           		</tr>
       		</table>
       		<br>
@@ -55,21 +55,18 @@
       		<br>
       		<table>
       			<tr>
-            		<th class="tdA">MESA CAMA</th>
-            		<th class="tdA">VISTA PREVIA</th>
+            		<th class="th">MESA CAMA</th>
+            		<th class="th">VISTA PREVIA</th>
           		</tr>
           		<tr>
-            		<th class="tdA">Este mueble lo puedes personalizar indicando ciertas dimensiones posibles de anchura y altura, además de material de fabricación como roble o aglomerado, y color como natural, blanco o negro.</th>
+            		<th class="th">Este mueble lo puedes personalizar indicando el tamaño de colchón como sencillo, semidoble o doble, además de instalación opcional de repisa o cajón superior, material de fabricación como roble o aglomerado, y color como natural, blanco o negro.</th>
             		<th rowspan="4"><%= image_tag("mesaCama.jpg", :width => "100%", :alt => "Vista previa de la Mesa Cama") %></th>
           		</tr>
           		<tr>
-            		<th class="tdA"><a class="nav-link" href="/cotizmescams/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+            		<th class="th"><a class="nav-link" href="/cotizmescams/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
           		</tr>
           		<tr>
-            		<th class="tdA"><a class="nav-link" href="/cotizmescams">CONSULTA TUS COTIZACIONES DE ESTE TIPO DE MUEBLE</a></th>
-          		</tr>
-          		<tr>
-            		<th class="tdA"><a class="nav-link" href="/ordenmescams">CONSULTA TUS ÓRDENES DE COMPRA DE ESTE TIPO DE MUEBLE</a></th>
+            		<th class="th"><a class="nav-link" href="/cotizmescams">CONSULTA TUS COTIZACIONES DE ESTE TIPO DE MUEBLE</a></th>
           		</tr>
       		</table>
     	</div>

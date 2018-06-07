@@ -6,9 +6,21 @@ class CotizclomulsController < ApplicationController
   def index
     #@cotizclomuls = Cotizclomul.all
     @cotizclomuls = Cotizclomul.where("correo = ''")
-    if params[:correo]
+    if params[:correo] && params[:orden] && params[:filtrar]
       @correoelectronico = params[:correo]
       @cotizclomuls = Cotizclomul.where("correo = ?", @correoelectronico)
+      case params[:filtrar]
+      when 'confirmadas'
+        @cotizclomuls = @cotizclomuls.where("confirmacion = ?", 'COMPRA CONFIRMADA')
+      when 'pendientes'
+        @cotizclomuls = @cotizclomuls.where("confirmacion = ?", 'Por confirmar')
+      end
+      case params[:orden]
+      when 'Ascendente'
+        @cotizclomuls = @cotizclomuls.order(:created_at)
+      when 'Descendente'
+        @cotizclomuls = @cotizclomuls.order(:created_at).reverse
+      end
     end
   end
 
@@ -31,20 +43,21 @@ class CotizclomulsController < ApplicationController
         @ordenclomul.nombre = @cotizclomul.nombre
         @ordenclomul.fechacotizacion = @cotizclomul.created_at
         @ordenclomul.cantidad = @cotizclomul.cantidad
-        @ordenclomul.save
-        p HTTParty.post('http://localhost:3002/api/bills', {body:@ordenclomul.to_json, headers:{'Content-Type': 'application/json'}})
-        @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
-        @cotizclomul.save
-        redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
-        RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
+        if @ordenclomul.save
+          p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenclomul.to_json, headers: {'Content-Type': 'application/json'}})
+          @cotizclomul.confirmacion = 'COMPRA CONFIRMADA'
+          @cotizclomul.save
+          redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+          RemisorOrdenesCompraMailer.confirmacionordenclomul(@ordenclomul).deliver_now
+        end
       else
-        redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
+        redirect_to @cotizclomul, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta orden de compra. Intenta nuevamente.'
       end
     elsif params[:identificador]
       @identificador = params[:identificador]
       @cotizclomul = Cotizclomul.find(@identificador)
       RemisorClavesMailer.envioclavecotizclomul(@cotizclomul).deliver_now
-      redirect_to @cotizclomul
+      redirect_to @cotizclomul, notice: 'Se ha enviado a tu dirección de correo electrónico la clave de confirmación de orden de compra.'
     end
   end
 
@@ -74,7 +87,7 @@ class CotizclomulsController < ApplicationController
     respond_to do |format|
       if @cotizclomul.save
         RemisorCotizacionesMailer.confirmacioncotizclomul(@cotizclomul).deliver_now
-        p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizclomul.to_json, headers:{'Content-Type': 'application/json'}})
+        p HTTParty.post('http://localhost:3002/api/prices', {body: @cotizclomul.to_json, headers: {'Content-Type': 'application/json'}})
         format.html { redirect_to @cotizclomul, notice: 'Cotizclomul was successfully created.' }
         format.json { render :show, status: :created, location: @cotizclomul }
       else

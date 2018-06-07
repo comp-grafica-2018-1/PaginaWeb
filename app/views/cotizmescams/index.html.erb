@@ -1,51 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Cotizmescams</h1>
-
-<%= form_for "", url: cotizmescams_path, role: "Search", method: :get do %>
-  <%= text_field_tag :correo, @correoelectronico, placeholder: "Indica tu dirección de correo electrónico" %>
-  <%= submit_tag "Consultar Cotizaciones" %>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Colchón</th>
-      <th>Material</th>
-      <th>Color</th>
-      <th>Cajón Superior</th>
-      <th>Repisa</th>
-      <th>Correo</th>
-      <th>Nombre</th>
-      <th>Cantidad</th>
-      <th>Confirmación de Orden de Compra</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cotizmescams.each do |cotizmescam| %>
-      <tr>
-        <td><%= cotizmescam.colchon %></td>
-        <td><%= cotizmescam.material %></td>
-        <td><%= cotizmescam.color %></td>
-        <td><%= cotizmescam.cajonsuperior %></td>
-        <td><%= cotizmescam.repisa %></td>
-        <td><%= cotizmescam.correo %></td>
-        <td><%= cotizmescam.nombre %></td>
-        <td><%= cotizmescam.cantidad %></td>
-        <td><%= cotizmescam.confirmacion %></td>
-        <td><%= link_to 'Show', cotizmescam %></td>
-        <td><%= link_to 'Edit', edit_cotizmescam_path(cotizmescam) %></td>
-        <td><%= link_to 'Destroy', cotizmescam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<!-- <%= link_to 'New Cotizmescam', new_cotizmescam_path %> -->
-<%= link_to 'Inicio', inicio_index_path %>
-<%= link_to 'Cotiza el Mueble que deseas', transacciones_cotizaciones_path %>
-<%= link_to 'Consulta tus Cotizaciones y Pedidos', transacciones_consultas_path %>
+<header class="espacioPagina imagenFondo1">
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-heading text-uppercase">Cotizaciones de Mesa Cama</div>
+      <div class="intro-lead-in">Puedes consultar tus cotizaciones de este tipo de mueble, indicando tu dirección de correo electrónico con la cual realizaste tus cotizaciones:</div>
+      <br>
+      <br>
+      <br>
+      <%= form_for "", url: cotizmescams_path, role: "Search", method: :get do %>
+        <table>
+          <tr>
+            <th class="th2">
+              <%= label_tag :orden, 'Orden de Cotizaciones:' %>
+            </th>
+            <th class="th">
+              <%= select_tag(:orden, options_for_select([['Desde cotizaciones más recientes', 'Descendente'], ['Desde cotizaciones más antiguas', 'Ascendente']])) %>
+            </th>
+          </tr>
+          <tr>
+            <th class="th2">
+              <%= label_tag :filtrar, 'Filtrar Cotizaciones por:' %>
+            </th>
+            <th class="th">
+              <%= select_tag(:filtrar, options_for_select([['Todos', 'todos'], ['Cotizaciones con Orden de Compra Confirmada', 'confirmadas'], ['Cotizaciones con Orden de Compra Pendiente', 'pendientes']])) %>
+            </th>
+          </tr>
+          <tr>
+            <th class="th2"><%= label_tag :correo, 'Correo Electrónico:' %></th>
+            <th class="th"><%= text_field_tag :correo, @correoelectronico %></th>
+          </tr>
+          <tr>
+            <th class="th" colspan="2"><br><%= submit_tag "Consultar Cotizaciones" %></th>
+          </tr>
+        </table>
+      <% end %>
+      <br>
+      <br>
+      <br>
+      <table class="">
+        <tr>
+          <th class="th2">Número de Cotización</th>
+          <th class="th2">Fecha de Cotización</th>
+          <th class="th2">Confirmación de Orden de Compra</th>
+          <th class="th2" colspan="1">Acciones</th>
+        </tr>
+        <% @cotizmescams.each do |cotizmescam| %>
+          <tr>
+            <td class="th2"><%= cotizmescam.id %></td>
+            <td class="th2"><%= (cotizmescam.created_at - 5.hours).strftime("%d/%m/%Y - %I:%M:%S %p") %></td>
+            <td class="th2"><%= cotizmescam.confirmacion %></td>
+            <td class="th2"><a class="nav-link" href="/cotizmescams/<%=cotizmescam.id %>"><b>VER DETALLES</b></a></td>
+            <!--<td><%= link_to 'Ver Detalles', cotizmescam %></td>-->
+            <!--<td><%= link_to 'Edit', edit_cotizmescam_path(cotizmescam) %></td>-->
+            <!--<td><%= link_to 'Destroy', cotizmescam, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          </tr>
+        <% end %>
+      </table>
+      <br>
+      <br>
+      <br>
+      <table>
+        <tr>
+          <th class="th"><a class="nav-link th" href="/cotizmescams/new">HAZ UNA COTIZACIÓN DE ESTE MUEBLE</a></th>
+          <th class="th"><a class="nav-link th" href="/catalogo/index">REGRESAR AL CATÁLOGO</a></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</header>

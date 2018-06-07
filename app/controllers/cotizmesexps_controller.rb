@@ -30,12 +30,13 @@ class CotizmesexpsController < ApplicationController
         @ordenmesexp.nombre = @cotizmesexp.nombre
         @ordenmesexp.fechacotizacion = @cotizmesexp.created_at
         @ordenmesexp.cantidad = @cotizmesexp.cantidad
-        @ordenmesexp.save
-        p HTTParty.post('http://localhost:3002/api/bills', {body:@ordenmesexp.to_json, headers:{'Content-Type': 'application/json'}})
-        @cotizmesexp.confirmacion = 'COMPRA CONFIRMADA'
-        @cotizmesexp.save
-        redirect_to @cotizmesexp, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
-        RemisorOrdenesCompraMailer.confirmacionordenmesexp(@ordenmesexp).deliver_now
+        if @ordenmesexp.save
+          p HTTParty.post('http://localhost:3002/api/bills', {body: @ordenmesexp.to_json, headers: {'Content-Type': 'application/json'}})
+          @cotizmesexp.confirmacion = 'COMPRA CONFIRMADA'
+          @cotizmesexp.save
+          redirect_to @cotizmesexp, notice: 'Se ha enviado a tu dirección de correo electrónico la confirmación de orden de compra. Muchas gracias.'
+          RemisorOrdenesCompraMailer.confirmacionordenmesexp(@ordenmesexp).deliver_now
+        end
       else
         redirect_to @cotizmesexp, notice: 'La clave de confirmación dada no es correcta. Por lo tanto no se confirma esta órden de compra. Intenta nuevamente.'
       end
@@ -73,7 +74,7 @@ class CotizmesexpsController < ApplicationController
     respond_to do |format|
       if @cotizmesexp.save
         RemisorCotizacionesMailer.confirmacioncotizmesexp(@cotizmesexp).deliver_now
-        p HTTParty.post('http://localhost:3002/api/prices', {body:@cotizmesexp.to_json, headers:{'Content-Type': 'application/json'}})
+        p HTTParty.post('http://localhost:3002/api/prices', {body: @cotizmesexp.to_json, headers: {'Content-Type': 'application/json'}})
         format.html { redirect_to @cotizmesexp, notice: 'Cotizmesexp was successfully created.' }
         format.json { render :show, status: :created, location: @cotizmesexp }
       else
