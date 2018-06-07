@@ -1,10 +1,10 @@
 # README
 
-Este archivo permite a los lectores del repositorio śaber cómo ejecutar la página web del proyecto Computación Gráfica 2018-1.
+Este archivo permite a los lectores del repositorio saber cómo ejecutar la página web del proyecto Computación Gráfica 2018-1.
 
 # Dependencias o Requisitos
 
-* Ruby (Versión Recomendada >= 2.3.0) on Rails (Versión Recomendada >= 5.0.0), en el link se encuentran instrucciones detalladas para instalar según sistema operativo:
+* Ruby (Versión Recomendada >= 2.3.0) on Rails (Versión Recomendada >= 5.0.0), en los siguientes enlaces se encuentran instrucciones detalladas para instalar según sistema operativo:
 * En Linux para Ubuntu 16.04: [https://gorails.com/setup/ubuntu/16.04](https://gorails.com/setup/ubuntu/16.04)
 * En Windows 10: [https://gorails.com/setup/windows/10](https://gorails.com/setup/windows/10)
 
@@ -23,4 +23,4 @@ rails s
 
 Después en el navegador, acceder a la dirección [localhost:3000](localhost:3000).
 
-Cuando se quiera terminar la ejecucióm, usar el comando Ctrl + C en la consola donde se está ejecutando la aplicación web.
+Cuando se quiera terminar la ejecución, usar el comando Ctrl + C en la consola donde se está ejecutando la aplicación web.
