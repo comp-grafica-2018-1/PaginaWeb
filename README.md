@@ -12,14 +12,14 @@ Este archivo permite a los lectores del repositorio śaber cómo ejecutar la pá
 
 En la consola del sistema operativo (CMD para Windows o Bash/Terminal para Linux) ubicarse en el directorio raíz del proyecto ../PaginaWeb/, y luego usar el siguiente comando:
 
-'''
+```
 rails server
-'''
+```
 o su equivalente, o simplificado
 
-'''
+```
 rails s
-'''
+```
 
 Después en el navegador, acceder a la dirección [localhost:3000](localhost:3000).
 
