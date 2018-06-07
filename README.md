@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este archivo permite a los lectores del repositorio śaber cómo ejecutar la página web del proyecto Computación Gráfica 2018-1.
 
-Things you may want to cover:
+# Dependencias o Requisitos
 
-* Ruby version
+* Ruby (Versión Recomendada >= 2.3.0) on Rails (Versión Recomendada >= 5.0.0), en el link se encuentran instrucciones detalladas para instalar según sistema operativo:
+* En Linux para Ubuntu 16.04: [https://gorails.com/setup/ubuntu/16.04](https://gorails.com/setup/ubuntu/16.04)
+* En Windows 10: [https://gorails.com/setup/windows/10](https://gorails.com/setup/windows/10)
 
-* System dependencies
+# Ejecución
 
-* Configuration
+En la consola del sistema operativo (CMD para Windows o Bash/Terminal para Linux) ubicarse en el directorio raíz del proyecto ../PaginaWeb/, y luego usar el siguiente comando:
 
-* Database creation
+rails server
+o su equivalente, o simplificado
+rails s
 
-* Database initialization
+Después en el navegador, acceder a la dirección [localhost:3000](localhost:3000).
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Cuando se quiera terminar la ejecucióm, usar el comando Ctrl + C en la consola donde se está ejecutando la aplicación web.
